@@ -10,21 +10,53 @@
 #word cmd: "cmd"
 #word dup: "dup"
 #word shell: "shell".
-zoom in: edit.zoom_in()
-zoom out: edit.zoom_out()
-(page | scroll) up: key(pgup)
-(page | scroll) down: key(pgdown)
-copy that: edit.copy()
-cut that: edit.cut()
-paste that: edit.paste()
-undo that: edit.undo()
-redo that: edit.redo()
-paste match: edit.paste_match_style()
-file save: edit.save()
-wipe: key(backspace)    
+zoom [in]: 
+	edit.zoom_in()
+	user.quick_macro_set("edit.zoom_in")
+
+zoom out: 
+	edit.zoom_out()
+	user.quick_macro_set("edit.zoom_out")
+
+(page | scroll) up: 
+	key(pgup)
+	user.quick_macro_set("key","pgup")
+
+(page | scroll) down: 
+	key(pgdown)
+	user.quick_macro_set("key","pgdown")
+
+copy that: 
+	edit.copy()
+	user.quick_macro_set("edit.paste")
+	
+cut that: 
+	edit.cut()
+	user.quick_macro_set("edit.paste")
+
+
+paste that: 
+	edit.paste()
+	user.quick_macro_set("edit.paste")
+
+paste match: 
+	edit.paste_match_style()
+	user.quick_macro_set("edit.paste_match_style")
+
+save file: edit.save()
+
+undo that: 
+	edit.undo()
+	user.quick_macro_set("edit.undo")
+
+redo that: 
+	edit.redo()
+	user.quick_macro_set("edit.redo")
+
+wipe: 
+	key(backspace)
+	user.quick_macro_set("key","backspace")
+
 (pad | padding): 
 	insert("  ") 
 	key(left)
-slap:
-	edit.line_end()
-	key(enter)

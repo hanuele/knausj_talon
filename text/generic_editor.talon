@@ -1,26 +1,34 @@
 find it:
     edit.find()
-
+    user.quick_macro_set("edit.find_next")
+    
 next one:
     edit.find_next()
 
 go word left:
     edit.word_left()
+    user.quick_macro_set("edit.word_left")
 
 go word right:
     edit.word_right()
+    user.quick_macro_set("edit.word_right")
 
 go left:
     edit.left()
+    user.quick_macro_set("edit.left")
 
 go right:
     edit.right()
+    user.quick_macro_set("edit.right")
 
 go up:
     edit.up()
+    user.quick_macro_set("edit.up")
 
 go down:
     edit.down()
+    user.quick_macro_set("edit.down")
+
 
 go line start:
     edit.line_start()
@@ -43,9 +51,12 @@ go way up:
 
 go page down:
     edit.page_down()
+    user.quick_macro_set("edit.page_down")
+
 
 go page up:
     edit.page_up()
+    user.quick_macro_set("edit.page_up")
 
 # selecting
 select line:
@@ -56,24 +67,30 @@ select all:
 
 select left:
     edit.extend_left()
+    user.quick_macro_set("edit.extend_left")
 
 select right:
     edit.extend_right()
+    user.quick_macro_set("edit.extend_right")
 
 select up:
     edit.extend_line_up()
+    user.quick_macro_set("edit.extend_line_up")
 
 select down:
     edit.extend_line_down()
+    user.quick_macro_set("edit.extend_line_down")
 
 select word:
     edit.select_word()
 
 select word left:
     edit.extend_word_left()
+    user.quick_macro_set("edit.extend_word_left")
 
 select word right:
     edit.extend_word_right()
+    user.quick_macro_set("edit.extend_word_right")
 
 select way left:
     edit.extend_line_start()
@@ -90,19 +107,25 @@ select way down:
 # editing
 indent [more]:
     edit.indent_more()
+    user.quick_macro_set("edit.indent_more")
 
 (indent less | out dent):
     edit.indent_less()
+    user.quick_macro_set("edit.indent_less")
 
 # deleting
 clear line:
     edit.delete_line()
+    user.quick_macro_set("edit.delete_line")
 
 clear left:
     key(backspace)
+    user.quick_macro_set("edit.delete_line")
 
 clear right:
     key(delete)
+    user.quick_macro_set("key","delete")
+
 
 clear up:
     edit.extend_line_up()

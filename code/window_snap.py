@@ -141,11 +141,11 @@ _snap_positions = {
     # .--.--.--.
     # |  |  |  |
     # '--'--'--'
-    "center third": RelativeScreenPos(1 / 3, 0, 2 / 3, 1),
-    "left third": RelativeScreenPos(0, 0, 1 / 3, 1),
-    "right third": RelativeScreenPos(2 / 3, 0, 1, 1),
-    "left two thirds": RelativeScreenPos(0, 0, 2 / 3, 1),
-    "right two thirds": RelativeScreenPos(1 / 3, 0, 1, 1,),
+    "cat": RelativeScreenPos(1 / 3, 0, 2 / 3, 1),
+    "mouse": RelativeScreenPos(0, 0, 1 / 3, 1),
+    "dog": RelativeScreenPos(2 / 3, 0, 1, 1),
+    "fat": RelativeScreenPos(0, 0, 2 / 3, 1),
+    "large": RelativeScreenPos(1 / 3, 0, 1, 1,),
     # Quarters
     # .---.---.
     # |---|---|

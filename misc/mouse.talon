@@ -6,16 +6,18 @@ touch:
 	mouse_click(0)
 	# close the mouse grid if open
 	user.grid_close()
+	user.quick_macro_set("mouse_click",0)
 
 righty: 
 	mouse_click(1)
 	# close the mouse grid if open
 	user.grid_close()
-
+	user.quick_macro_set("mouse_click",1)
 midclick: 
 	mouse_click(2)
 	# close the mouse grid
 	user.grid_close()
+	user.quick_macro_set("mouse_click",2)
 
 #see keys.py for modifiers.
 #defaults
@@ -51,11 +53,16 @@ drag:
 	user.mouse_drag()
 	# close the mouse grid
 	user.grid_close()
-wheel down: user.mouse_scroll_down()
+wheel down: 
+	user.mouse_scroll_down()
+	user.quick_macro_set("user.mouse_scroll_down")
 wheel down here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down()
-wheel tiny [down]: mouse_scroll(20)
+wheel tiny [down]: 
+	mouse_scroll(20)
+	user.quick_macro_set("mouse_scroll",20)
+
 wheel tiny [down] here:
     user.mouse_move_center_active_window()
     mouse_scroll(20)
@@ -63,10 +70,16 @@ wheel downer: user.mouse_scroll_down_continuous()
 wheel downer here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down_continuous()
-wheel up: user.mouse_scroll_up()
+wheel up: 
+	user.mouse_scroll_up()
+	user.quick_macro_set("user.mouse_scroll_up")
+
 wheel up here:
  user.mouse_scroll_up()
-wheel tiny up: mouse_scroll(-20)
+wheel tiny up: 
+	mouse_scroll(-20)
+	user.quick_macro_set("mouse_scroll",-20)
+
 wheel tiny up here:
     user.mouse_move_center_active_window()
     mouse_scroll(-20)
@@ -82,7 +95,8 @@ wheel stop: user.mouse_scroll_stop()
 wheel stop here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_stop()
-wheel left: mouse_scroll(0, -40)
+wheel left: 
+	mouse_scroll(0, -40)
 wheel left here:
     user.mouse_move_center_active_window()
     mouse_scroll(0, -40)

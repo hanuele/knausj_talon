@@ -146,6 +146,13 @@ _snap_positions = {
     "dog": RelativeScreenPos(2 / 3, 0, 1, 1),
     "fat": RelativeScreenPos(0, 0, 2 / 3, 1),
     "large": RelativeScreenPos(1 / 3, 0, 1, 1,),
+    # Forths
+    # .-.-.-.-'
+    # | | | | |
+    # '-'-'-'-'
+    "teams": RelativeScreenPos(0, 0, 1 / 4, 1),
+    "list": RelativeScreenPos(1/4, 0, 1 / 2, 1),
+
     # Quarters
     # .---.---.
     # |---|---|
@@ -158,15 +165,8 @@ _snap_positions = {
     # .--.--.--.
     # |--|--|--|
     # '--'--'--'
-    "top right third": RelativeScreenPos(2 / 3, 0, 1, 0.5),
-    "top left two thirds": RelativeScreenPos(0, 0, 2 / 3, 0.5),
-    "top right two thirds": RelativeScreenPos(1 / 3, 0, 1, 0.5),
-    "top center third": RelativeScreenPos(1 / 3, 0, 2 / 3, 0.5),
-    "bottom left third": RelativeScreenPos(0, 0.5, 1 / 3, 1),
-    "bottom right third": RelativeScreenPos(2 / 3, 0.5, 1, 1),
-    "bottom left two thirds": RelativeScreenPos(0, 0.5, 2 / 3, 1),
-    "bottom right two thirds": RelativeScreenPos(1 / 3, 0.5, 1, 1),
-    "bottom center third": RelativeScreenPos(1 / 3, 0.5, 2 / 3, 1),
+    "explore": RelativeScreenPos(2 / 3, 0, 1, 0.5),
+    "music": RelativeScreenPos(2 / 3, 0.5, 1, 1),
     # Special
     "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
     "full": RelativeScreenPos(0, 0, 1, 1),

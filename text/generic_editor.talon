@@ -130,10 +130,12 @@ clear right:
 clear up:
     edit.extend_line_up()
     edit.delete()
+    user.quick_macro_set_chained("edit.extend_line_up#edit.delete")
 
 clear down:
     edit.extend_line_down()
     edit.delete()
+    user.quick_macro_set_chained("edit.extend_line_down#edit.delete")
 
 clear word:
     edit.delete_word()
@@ -141,10 +143,12 @@ clear word:
 clear word left:
     edit.extend_word_left()
     edit.delete()
+    user.quick_macro_set_chained("edit.extend_word_left#edit.delete")
 
 clear word right:
     edit.extend_word_right()
     edit.delete()
+    user.quick_macro_set_chained("edit.extend_word_right#edit.delete")
 
 clear way left:
     edit.extend_line_start()

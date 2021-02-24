@@ -165,6 +165,7 @@ _snap_positions = {
     # .--.--.--.
     # |--|--|--|
     # '--'--'--'
+    "log": RelativeScreenPos(0, 2/3, 1/3, 1 ),
     "explore": RelativeScreenPos(2 / 3, 0, 1, 0.5),
     "music": RelativeScreenPos(2 / 3, 0.5, 1, 1),
     # Special

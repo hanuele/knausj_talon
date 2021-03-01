@@ -12,7 +12,7 @@ righty:
 	mouse_click(1)
 	# close the mouse grid if open
 	user.grid_close()
-	user.quick_macro_set("mouse_click",1)
+	user.quick_macro_set("mouse_click",0)
 midclick: 
 	mouse_click(2)
 	# close the mouse grid

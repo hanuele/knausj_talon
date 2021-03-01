@@ -76,7 +76,7 @@ setting_mouse_continuous_scroll_amount = mod.setting(
 setting_mouse_wheel_down_amount = mod.setting(
     "mouse_wheel_down_amount",
     type=int,
-    default=120,
+    default=200,
     desc="The amount to scroll up/down (equivalent to mouse wheel on Windows by default)",
 )
 

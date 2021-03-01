@@ -1,4 +1,5 @@
 from talon import imgui, Module, speech_system, actions, app
+from datetime import datetime
 
 # We keep command_history_size lines of history, but by default display only
 # command_history_display of them.
@@ -16,14 +17,14 @@ def parse_phrase(word_list):
 
 def on_phrase(j):
     global history
-
     try:
         val = parse_phrase(getattr(j["parsed"], "_unmapped", j["phrase"]))
     except:
         val = parse_phrase(j["phrase"])
-
+    now = datetime.now()
+    current_time = now.strftime("[%H:%M:%S]")
     if val != "":
-        history.append(val)
+        history.append(current_time + " " + val)
         history = history[-setting_command_history_size.get():]
 
 

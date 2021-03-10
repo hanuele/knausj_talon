@@ -10,6 +10,7 @@
 #word cmd: "cmd"
 #word dup: "dup"
 #word shell: "shell".
+
 zoom [in]: 
 	edit.zoom_in()
 	user.quick_macro_set("edit.zoom_in")

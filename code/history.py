@@ -5,7 +5,9 @@ from datetime import datetime
 # command_history_display of them.
 mod = Module()
 setting_command_history_size = mod.setting("command_history_size", int, default=50)
-setting_command_history_display = mod.setting("command_history_display", int, default=10)
+setting_command_history_display = mod.setting(
+    "command_history_display", int, default=10
+)
 
 hist_more = False
 history = []
@@ -40,6 +42,7 @@ def gui(gui: imgui.GUI):
 
 
 speech_system.register("phrase", on_phrase)
+
 
 @mod.action_class
 class Actions:

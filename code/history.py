@@ -29,12 +29,12 @@ def on_phrase(j):
 
 
 # todo: dynamic rect?
-@imgui.open(x=2300,y=1000)
+@imgui.open(x=1450,y=1405)
 def gui(gui: imgui.GUI):
     global history
-    gui.text("Command History")
-    gui.line()
-    text = history[:] if hist_more else history[-setting_command_history_display.get():]
+    #gui.text("Command History")
+    #gui.line()
+    text = history[:] if hist_more else history[-1:]
     for line in text:
         gui.text(line)
 

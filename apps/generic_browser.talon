@@ -2,8 +2,8 @@ tag: browser
 -
 (address bar | go address | go url): browser.focus_address()
 go home: browser.go_home()
-[go] forward: browser.go_forward()
-go (back | backward): browser.go_back()
+next page: browser.go_forward()
+prev page: browser.go_back()
 
 go private: browser.open_private_window()
 

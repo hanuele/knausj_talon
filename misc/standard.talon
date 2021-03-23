@@ -1,4 +1,4 @@
-#(jay son | jason ): "json"
+(jay son | jason ): "json"
 #(http | htp): "http"
 #tls: "tls"
 #M D five: "md5"
@@ -46,11 +46,11 @@ paste match:
 
 save file: edit.save()
 
-undo that: 
+revert: 
 	edit.undo()
 	user.quick_macro_set("edit.undo")
 
-redo that: 
+again: 
 	edit.redo()
 	user.quick_macro_set("edit.redo")
 

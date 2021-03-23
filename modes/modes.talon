@@ -2,13 +2,13 @@
 mode: all
 -
 
-trump go to sleep: 
-    speech.disable()
-    user.play_IdLikeNotToButYouKnow()
+#trump go to sleep: 
+#    speech.disable()
+#    user.play_IdLikeNotToButYouKnow()
 
-trump wake up: 
-    speech.enable()
-    user.play_TalonWake()
+#trump wake up: 
+#    speech.enable()
+#    user.play_TalonWake()
 
 ^dictation mode$:
     mode.disable("sleep")

@@ -17,3 +17,10 @@ action(edit.line_swap_down):
 	key(ctrl-shift-down)
 action(edit.indent_more): key(tab)
 action(edit.indent_less): key(shift-tab)
+
+# define some voice commands
+go <user.number_string>$:
+	key(ctrl-g)
+	insert(number_string)
+	key(enter)
+	

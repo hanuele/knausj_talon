@@ -5,10 +5,9 @@ settings(): speech.record_all = 1
 ^press <user.keys>$: key("{keys}")
 
 # Everything here should call auto_insert to preserve the state to correctly auto-capitalize/auto-space.
-<user.text>: auto_insert(text)
-{user.punctuation}: auto_insert(punctuation)
-new line: auto_insert("new-line")
-new paragraph: auto_insert("new-paragraph")
+<user.prose>: auto_insert(prose)
+new line: "\n"
+new paragraph: "\n\n"
 cap <user.word>:
     result = user.formatted_text(word, "CAPITALIZE_FIRST_WORD")
     auto_insert(result)
@@ -61,9 +60,7 @@ clear right <number_small> (character|characters):
 
 # Formatting
 formatted <user.format_text>:
-    user.auto_format_pause()
-    auto_insert(format_text)
-    user.auto_format_resume()
+    user.dictation_insert_raw(format_text)
 ^format selection <user.formatters>$:
     user.formatters_reformat_selection(formatters)
 

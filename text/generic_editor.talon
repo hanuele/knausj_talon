@@ -1,8 +1,8 @@
 find it:
-    edit.find()
+    edit.find(edit.selected_text())
     user.quick_macro_set("edit.find_next")
     
-next one:
+find neck:
     edit.find_next()
 
 go word left:

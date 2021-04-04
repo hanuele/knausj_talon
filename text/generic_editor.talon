@@ -4,6 +4,7 @@ find it:
     
 find neck:
     edit.find_next()
+    user.quick_macro_set("edit.find_next")
 
 go word left:
     edit.word_left()

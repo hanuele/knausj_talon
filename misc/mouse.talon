@@ -53,6 +53,7 @@ drag:
 	user.mouse_drag()
 	# close the mouse grid
 	user.grid_close()
+
 wheel down: 
 	user.mouse_scroll_down()
 	user.quick_macro_set("user.mouse_scroll_down")

@@ -8,7 +8,7 @@ case when:
     "CASE WHEN  END"
     key(left:4)
 create table: "CREATE TABLE "
-delete: "DELETE "
+#delete: "DELETE "
 distinct: "DISTINCT "
 from: "FROM "
 for system time: "FOR SYSTEM TIME "

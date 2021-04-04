@@ -52,7 +52,8 @@ navigation_target_names = {
     "quotes": r'\'(.*?)\'',
     "all": r'(.+)',
     "method": r'\w+\((.*?)\)',
-    "constant": r'[A-Z_][A-Z_]+'
+    "constant": r'[A-Z_][A-Z_]+',
+    "unique": r'[0-9a-f]{32}\Z'
 }
 ctx.lists["self.navigation_target_name"] = navigation_target_names
 

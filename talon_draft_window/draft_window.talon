@@ -4,6 +4,10 @@ title:Talon Draft
 settings():
   # Enable 'Smart dictation mode', see https://github.com/knausj85/knausj_talon/pull/356
   user.context_sensitive_dictation = 1
+  user.draft_window_theme = "dark"
+  user.draft_window_text_size = 20
+  user.draft_window_label_size = 20
+  user.draft_window_label_color = "ccff44"
 
 # Replace a single word with a phrase
 replace <user.draft_anchor> with <user.text>:

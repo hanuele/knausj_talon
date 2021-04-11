@@ -47,7 +47,7 @@ navigation_target_names = {
     "parens": r'\((.*?)\)',
     "squares": r'\[(.*?)\]',
     "braces": r'\{(.*?)\}',
-    "dubquotes": r'\"(.*?)\"',
+    "dub": r'\"(.*?)\"',
     "angles": r'\<(.*?)\>',
     "quotes": r'\'(.*?)\'',
     "all": r'(.+)',

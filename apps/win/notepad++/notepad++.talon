@@ -3,6 +3,10 @@ app: notepad_plus_plus
 tag(): user.find_and_replace
 tag(): user.line_commands
 tag(): user.tabs
+#tag(): user.telector_ui_underline
+settings():
+    user.telector_enable_marker_ui_offset  = 1
+	
 action(app.tab_previous):
 	key(ctrl-pageup)
 action(app.tab_next):

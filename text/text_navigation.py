@@ -53,7 +53,7 @@ navigation_target_names = {
     "all": r'(.+)',
     "method": r'\w+\((.*?)\)',
     "constant": r'[A-Z_][A-Z_]+',
-    "unique": r'[0-9a-f]{32}\Z'
+    "unique": r'\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'
 }
 ctx.lists["self.navigation_target_name"] = navigation_target_names
 
@@ -165,7 +165,7 @@ def select(direction, start, end, length):
 def navigate_left(
     navigation_action, navigation_target_name, before_or_after, regex, occurrence_number, direction
 ):
-    current_selection_length = get_current_selection_size()
+    current_selection_length = 0#get_current_selection_size()
     if current_selection_length > 0:
         actions.edit.right()
     text = get_text_left() if direction == "LEFT" else get_text_up()
@@ -188,7 +188,7 @@ def navigate_left(
 def navigate_right(
     navigation_action, navigation_target_name, before_or_after, regex, occurrence_number, direction
 ):
-    current_selection_length = get_current_selection_size()
+    current_selection_length = 0#get_current_selection_size()
     if current_selection_length > 0:
         actions.edit.left()
     text = get_text_right() if direction == "RIGHT" else get_text_down()

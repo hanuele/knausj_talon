@@ -1,5 +1,4 @@
-#defines the various mode commands
-mode: all
+not mode: sleep
 -
 
 #trump go to sleep: 

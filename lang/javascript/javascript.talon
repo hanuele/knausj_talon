@@ -155,3 +155,12 @@ state spread: "..."
 ^funky <user.text>$: user.code_default_function(text)
 ^pro funky <user.text>$: user.code_protected_function(text)
 ^pub funky <user.text>$: user.code_public_function(text)
+
+# javascript debugging
+console log:
+  insert("console.log()")
+  key(left)
+
+console directory:
+  insert("console.dir()")
+  key(left)

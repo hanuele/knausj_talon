@@ -1,6 +1,8 @@
 mode: dictation
 -
-settings(): speech.record_all = 1
+settings(): 
+    speech.record_all = 1
+    speech.record_labels = 1
 
 ^press <user.keys>$: key("{keys}")
 

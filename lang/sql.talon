@@ -46,3 +46,4 @@ with as:
     "WITH  AS ()"
     key(left enter:2 up:2 end left:5)
 semi: key(end ;)
+with no lock: "WITH (NOLOCK) "

@@ -4,6 +4,8 @@ import time
 
 import talon
 from talon import Context, Module, app, imgui, ui, fs, actions
+from talon.grammar import Phrase
+from typing import List
 from glob import glob
 from itertools import islice
 from pathlib import Path
@@ -263,7 +265,7 @@ class Actions:
                 return app
         raise RuntimeError(f'App not running: "{name}"')
 
-    def switcher_focus(name: str):
+    def switcher_focus(name: str,phrase: Phrase = None):
         """Focus a new application by name"""
         app = actions.user.get_running_app(name)
         app.focus()
@@ -274,7 +276,15 @@ class Actions:
         if talon.app.platform == "mac":
             while ui.active_app() != app and time.monotonic() - t1 < timeout:
                 time.sleep(0.1)
+        if phrase:
+            actions.sleep("200ms")
+            actions.user.rephrase(phrase)
 
+    def switcher_focus_multiple(names: List[str], phrases: List[Phrase]):
+        """Focus applications by name"""
+        for n, p in zip(names, phrases):
+            actions.user.switcher_focus(n, p)
+            
     def switcher_launch(path: str):
         """Launch a new application by path"""
         if app.platform == "windows":

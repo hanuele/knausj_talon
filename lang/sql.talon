@@ -41,7 +41,23 @@ union: "UNION "
 update: "UPDATE"
 using: "USING "
 value null: "NULL"
-where: "WHERE "
+where$: "WHERE "
+where id in: 
+    "WHERE ID IN ("
+    key(enter:2)
+    ")"
+    key(up:1 tab)
+    "''--"
+    key(left:3)
+
+where target id in: 
+    "WHERE TargetID IN ("
+    key(enter:2)
+    ")"
+    key(up:1 tab)
+    "''--"
+    key(left:3)
+
 with as:
     "WITH  AS ()"
     key(left enter:2 up:2 end left:5)

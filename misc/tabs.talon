@@ -1,5 +1,6 @@
 tag: user.tabs
 -
+
 tab (open | new): 
 	app.tab_open()
 
@@ -16,6 +17,7 @@ tab close:
     user.quick_macro_set("app.tab_close")
 
 tab (restore|reopen): app.tab_reopen()
+
 
 go tab <number>: user.tab_jump(number)
 go tab final: user.tab_final()

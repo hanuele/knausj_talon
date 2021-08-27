@@ -6,9 +6,11 @@ pick:
 	mouse_click(0)
 	# close the mouse grid if open
 	user.grid_close()
-	user.quick_macro_set("mouse_click",0)
+    # End any open drags
+	# Touch automatically ends left drags so this is for right drags specifically
+	user.mouse_drag_end()
 
-righty: 
+righty:
 	mouse_click(1)
 	# close the mouse grid if open
 	user.grid_close()
@@ -49,14 +51,21 @@ midclick:
 	mouse_click()
 	# close the mouse grid
 	user.grid_close()
-drag: 
-	user.mouse_drag()
+left drag | drag:
+	user.mouse_drag(0)
 	# close the mouse grid
 	user.grid_close()
-
 wheel down: 
 	user.mouse_scroll_down()
 	user.quick_macro_set("user.mouse_scroll_down")
+
+right drag | righty drag:
+	user.mouse_drag(1)
+	# close the mouse grid
+	user.grid_close()
+end drag | drag end:
+    user.mouse_drag_end()
+
 wheel down here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down()
@@ -116,4 +125,6 @@ wheel tiny right here:
 curse yes: user.mouse_show_cursor()
 curse no: user.mouse_hide_cursor()
 copy mouse position: user.copy_mouse_position()
+
 center mouse: user.mouse_move_center_active_window()
+

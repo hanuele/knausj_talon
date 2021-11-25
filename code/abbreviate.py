@@ -212,6 +212,7 @@ abbreviations = {
     "web": "www",
     "what the fuck": "wtf",
     "window": "win",
+    "active directory": "AD",
 }
 
 ctx = Context()

@@ -11,6 +11,8 @@ from glob import glob
 from itertools import islice
 from pathlib import Path
 import subprocess
+import win32gui
+import logging
 
 # Construct at startup a list of overides for application names (similar to how homophone list is managed)
 # ie for a given talon recognition word set  `one note`, recognized this in these switcher functions as `ONENOTE`
@@ -24,6 +26,7 @@ override_file_path = os.path.join(overrides_directory, override_file_name)
 mod = Module()
 mod.list("running", desc="all running applications")
 mod.list("launch", desc="all launchable applications")
+mod.list("visible", desc="all visible windows")
 ctx = Context()
 
 # a list of the current overrides
@@ -32,6 +35,8 @@ overrides = {}
 # a list of the currently running application names
 running_application_dict = {}
 
+# a list of the currently visible window names
+visible_window_dict = {}
 
 mac_application_directories = [
     "/Applications",
@@ -169,6 +174,10 @@ if app.platform == "windows":
 
         return items
 
+    def enumHandler(hwnd, resultList):
+        if win32gui.IsWindowVisible(hwnd):
+             resultList.append(win32gui.GetWindowText(hwnd))
+
 
 @mod.capture(rule="{self.running}")  # | <user.text>)")
 def running_applications(m) -> str:
@@ -178,12 +187,35 @@ def running_applications(m) -> str:
     except AttributeError:
         return m.text
 
+@mod.capture(rule="{self.visible}")  # | <user.text>)")
+def visible_windows(m) -> str:
+    "Returns a single window name"
+    try:
+        return m.visible
+    except AttributeError:
+        return m.text
+
 
 @mod.capture(rule="{self.launch}")
 def launch_applications(m) -> str:
     "Returns a single application name"
     return m.launch
 
+def update_visible_list():
+
+    visible = []
+
+    win32gui.EnumWindows(enumHandler, visible)
+    
+    #print(str(visible_window_dict))
+    # todo: should the overrides remove the other spoken forms for an application?
+
+    lists = {
+        "self.visible": visible,
+    }
+
+    # batch update lists
+    ctx.lists.update(lists)
 
 def update_running_list():
     global running_application_dict
@@ -267,6 +299,15 @@ class Actions:
         app = actions.user.get_running_app(name)
         actions.user.switcher_focus_app(app)
 
+        if phrase:
+            actions.sleep("200ms")
+            actions.user.rephrase(phrase)
+
+    def switcher_focus_multiple(names: List[str], phrases: List[Phrase]):
+        """Focus applications by name"""
+        for n, p in zip(names, phrases):
+            actions.user.switcher_focus(n, p) 
+
     def switcher_focus_app(app: ui.App):
         """Focus application and wait until switch is made"""
         app.focus()
@@ -284,16 +325,7 @@ class Actions:
             if time.monotonic() - t1 > 1:
                 raise RuntimeError(f"Can't focus window: {window.title}")
             actions.sleep(0.1)
-            
-        if phrase:
-            actions.sleep("200ms")
-            actions.user.rephrase(phrase)
 
-    def switcher_focus_multiple(names: List[str], phrases: List[Phrase]):
-        """Focus applications by name"""
-        for n, p in zip(names, phrases):
-            actions.user.switcher_focus(n, p)
-            
     def switcher_launch(path: str):
         """Launch a new application by path (all OSes), or AppUserModel_ID path on Windows"""
         if app.platform != "windows":
@@ -329,6 +361,16 @@ class Actions:
         """Hides list of running applications"""
         gui_running.hide()
 
+    def switcher_toggle_visible():
+        """Shows/hides all visible windows"""
+        if gui_visible.showing:
+            gui_visible.hide()
+        else:
+            gui_visible.show()
+
+    def switcher_hide_visible():
+        """Hides list of visible windows"""
+        gui_visible.hide()
 
 @imgui.open()
 def gui_running(gui: imgui.GUI):
@@ -337,6 +379,12 @@ def gui_running(gui: imgui.GUI):
     for line in ctx.lists["self.running"]:
         gui.text(line)
 
+@imgui.open()
+def gui_visible(gui: imgui.GUI):
+    gui.text("Names of visible windows")
+    gui.line()
+    for line in ctx.lists["self.visible"]:
+        gui.text(line)
 
 def update_launch_list():
     launch = {}
@@ -358,8 +406,10 @@ def update_launch_list():
 
 
 def ui_event(event, arg):
+    #print(event)
     if event in ("app_launch", "app_close"):
         update_running_list()
+        update_visible_list()
 
 
 # Currently update_launch_list only does anything on mac, so we should make sure
@@ -367,7 +417,7 @@ def ui_event(event, arg):
 # errors on other platforms.
 ctx.lists["user.launch"] = {}
 ctx.lists["user.running"] = {}
-
+ctx.lists["user.visible"] = {}
 # Talon starts faster if you don't use the `talon.ui` module during launch
 
 
@@ -376,6 +426,7 @@ def on_ready():
     fs.watch(overrides_directory, update_overrides)
     update_launch_list()
     update_running_list()
+    update_visible_list()
     ui.register("", ui_event)
 
 

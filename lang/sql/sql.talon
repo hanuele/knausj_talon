@@ -1,6 +1,7 @@
 os: windows
 app: microsoft_edge
 win.title: /18027c26-f8c8-4ff3-8875-119e480336e6/
+win.title: /CL-/
 -
 
 # Commands
@@ -63,3 +64,8 @@ with as:
     key(left enter:2 up:2 end left:5)
 semi: key(end ;)
 with no lock: "WITH (NOLOCK) "
+declare unique: "DECLARE @variable uniqueidentifier = '';"
+declare string: "DECLARE @variable nvarchar(50) = '';"
+read view: 
+    "select definition from sys.objects o join sys.sql_modules m on m.object_id = o.object_id where o.object_id = object_id( '')"
+    key(left:2)

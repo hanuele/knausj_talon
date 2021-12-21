@@ -12,6 +12,8 @@ focus <user.running_applications> <phrase>$: user.switcher_focus(running_applica
 focus$: user.switcher_menu()
 running list: user.switcher_toggle_running()
 visible list: user.switcher_toggle_visible()
+running close: user.switcher_hide_running()
+visible close: user.switcher_hide_visible()
 launch <user.launch_applications>: user.switcher_launch(launch_applications)
 
 snap <user.window_snap_position>: user.snap_window(window_snap_position)

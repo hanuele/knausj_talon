@@ -378,6 +378,9 @@ def gui_running(gui: imgui.GUI):
     gui.line()
     for line in ctx.lists["self.running"]:
         gui.text(line)
+    gui.spacer()
+    if gui.button("Running close"):
+        actions.user.switcher_hide_running()
 
 @imgui.open()
 def gui_visible(gui: imgui.GUI):
@@ -385,6 +388,10 @@ def gui_visible(gui: imgui.GUI):
     gui.line()
     for line in ctx.lists["self.visible"]:
         gui.text(line)
+    gui.spacer()
+    if gui.button("Visible close"):
+        actions.user.switcher_hide_visible()
+
 
 def update_launch_list():
     launch = {}

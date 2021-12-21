@@ -69,3 +69,14 @@ declare string: "DECLARE @variable nvarchar(50) = '';"
 read view: 
     "select definition from sys.objects o join sys.sql_modules m on m.object_id = o.object_id where o.object_id = object_id( '')"
     key(left:2)
+
+collect meta information:
+    "SELECT db_name() as DATABASE_NAME, TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, ORDINAL_POSITION,"
+    key(space enter)
+    "COLUMN_DEFAULT, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH,"
+    key(space enter)
+    "NUMERIC_PRECISION, NUMERIC_PRECISION_RADIX, NUMERIC_SCALE,"
+    key(space enter)
+    "DATETIME_PRECISION"
+    key(space enter)
+    "FROM INFORMATION_SCHEMA.COLUMNS"

@@ -5,6 +5,17 @@ win.title: /CL-/
 -
 
 # Commands
+created: "CREATED "
+last update: "LASTUPDATE "
+id: "ID"
+title: "Title"
+description: "Description"
+parent id:"ParentID"
+select top <number>: 
+    "SELECT TOP("
+    insert(number) 
+    ") " 
+
 case when:
     "CASE WHEN  END"
     key(left:4)
@@ -21,6 +32,7 @@ insert into:
     "VALUES "
     key(up:2 end)
 is not null: " IS NOT NULL"
+not is null: " IS NOT NULL"
 is null: " IS NULL"
 #
 left join: "LEFT JOIN "
@@ -36,10 +48,10 @@ on columns: "ON "
 order ascending: "ASC "
 order by: "ORDER BY "
 order descending: "DESC "
-select every: "SELECT *"
+select every: "SELECT * FROM "
 #select: "SELECT "
 union: "UNION "
-update: "UPDATE"
+update: "UPDATE "
 using: "USING "
 value null: "NULL"
 where$: "WHERE "
@@ -80,3 +92,10 @@ collect meta information:
     "DATETIME_PRECISION"
     key(space enter)
     "FROM INFORMATION_SCHEMA.COLUMNS"
+
+collect basic information:
+    "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME NOT IN ('created', 'id', 'description', 'parentid', 'title', 'lastupdate') ORDER BY TABLE_NAME, COLUMN_NAME, DATA_TYPE"
+    key(space enter)
+
+select basic:
+    "SELECT ID, Title, Created, LastUpdate "

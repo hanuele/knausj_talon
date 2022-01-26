@@ -1,13 +1,9 @@
 not mode: sleep
 -
 
-#trump go to sleep: 
-#    speech.disable()
-#    user.play_IdLikeNotToButYouKnow()
-
-#trump wake up: 
-#    speech.enable()
-#    user.play_TalonWake()
+trump down: 
+    speech.disable()
+    user.play_IdLikeNotToButYouKnow()
 
 ^dictation mode$:
     mode.disable("sleep")
@@ -18,4 +14,9 @@ not mode: sleep
 ^(command mode|Kommando modus)$:
     mode.disable("sleep")
     mode.disable("dictation")
+    mode.enable("command")
+
+^mixed mode$:
+    mode.disable("sleep")
+    mode.enable("dictation")
     mode.enable("command")

@@ -6,6 +6,7 @@ and code.language: javascript
 -
 tag(): user.code_operators
 tag(): user.code_comment
+tag(): user.code_block_comment
 tag(): user.code_generic
 
 settings():

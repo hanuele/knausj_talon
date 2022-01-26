@@ -7,7 +7,7 @@ block: user.code_block()
 is not (none|null): user.code_is_not_null()
 is (none|null): user.code_is_null()
 #todo: types?
-#word (dickt | dictionary): user.code_type_dictionary()
+word (dickt | dictionary): user.code_type_dictionary()
 state if: user.code_state_if()
 state else if: user.code_state_else_if()
 state else: user.code_state_else()

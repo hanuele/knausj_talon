@@ -24,3 +24,12 @@ snap <user.running_applications> <user.window_snap_position>:
     user.snap_app(running_applications, window_snap_position)
 snap <user.running_applications> [screen] <number>:
     user.move_app_to_screen(running_applications, number)
+
+snap <number> <user.window_snap_position>: 
+    user.move_window_to_screen(number)
+    sleep(0.5)
+    user.snap_window(window_snap_position)
+
+target <number> <user.window_snap_position>: 
+    user.move_cursor_to_snap_position_center(number, window_snap_position)
+    mouse_click(0)

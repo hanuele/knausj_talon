@@ -13,6 +13,7 @@ and code.language: javascript
 #     "string": ".ToString",
 # }
 
+ctx.tags = ["user.code_operators", "user.code_generic"]
 
 @ctx.action_class("user")
 class UserActions:
@@ -21,10 +22,6 @@ class UserActions:
 
     def code_is_null():
         actions.auto_insert(" === null")
-
-    def code_type_dictionary():
-        actions.insert("{}")
-        actions.key("left")
 
     def code_state_if():
         actions.insert("if ()")
@@ -51,6 +48,22 @@ class UserActions:
 
     def code_state_return():
         actions.insert("return ")
+
+    def code_comment(): 
+        actions.auto_insert('// ')
+
+    def code_block_comment():
+        actions.insert('/*')
+        actions.key('enter')
+        actions.key('enter')
+        actions.insert('*/')
+        actions.edit.up()
+
+    def code_block_comment_prefix(): 
+        actions.auto_insert('/*')
+
+    def code_block_comment_suffix(): 
+        actions.auto_insert('*/')
 
     def code_state_for():
         actions.insert("for ()")
@@ -112,6 +125,9 @@ class UserActions:
 
     def code_operator_indirection():
         actions.auto_insert("")
+
+    def code_operator_in():
+        actions.auto_insert('')
 
     def code_operator_address_of():
         actions.auto_insert("")

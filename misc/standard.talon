@@ -27,42 +27,47 @@ zoom out:
 	key(pgdown)
 	user.quick_macro_set("key","pgdown")
 
-copy way right:
+push end:
 	edit.extend_line_end()
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 
-copy way left:
+push start:
 	edit.extend_line_start()
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 		
 		
-copy selected: 
+push: 
 	edit.copy()
 	user.quick_macro_set("edit.paste")
-	
-cut selected: 
+
+push all:
+	edit.select_all() 
+	edit.copy()
+	user.quick_macro_set("edit.paste")
+
+cut: 
 	edit.cut()
 	user.quick_macro_set("edit.paste")
 
 
-paste selected: 
+pull: 
 	edit.paste()
 	user.quick_macro_set("edit.paste")
 
-paste match: 
+push match: 
 	edit.paste_match_style()
 	user.quick_macro_set("edit.paste_match_style")
 
 disk: edit.save()
 disk all: edit.save_all()
 
-revert: 
+(revert|virt|nope): 
 	edit.undo()
 	user.quick_macro_set("edit.undo")
 
-again: 
+(again|gen): 
 	edit.redo()
 	user.quick_macro_set("edit.redo")
 

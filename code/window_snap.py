@@ -11,7 +11,7 @@ import time
 from operator import xor
 from typing import Optional
 
-from talon import ui, Module, Context, actions
+from talon import ui, Module, Context,ctrl, actions
 
 
 def _set_window_pos(window, x, y, width, height):
@@ -25,7 +25,14 @@ def _set_window_pos(window, x, y, width, height):
     #
     # TODO: Audit once upstream Talon is bug-free on MS Windows
     window.rect = ui.Rect(round(x), round(y), round(width), round(height))
+    window.focus()
 
+def _set_cursor_pos(x, y):
+    """Helper to set the cursor position."""
+    # TODO: Special case for full screen move - use os-native maximize, rather
+    #   than setting the position?
+
+    ctrl.mouse_move(x, y)
 
 def _bring_forward(window):
     current_window = ui.active_window()
@@ -117,7 +124,27 @@ def _move_to_screen(
         width = window.rect.width * proportional_width
         height = window.rect.height * proportional_height
     _set_window_pos(window, x=x, y=y, width=width, height=height)
+    _set_cursor_pos(x=x+width/2, y=y+height/2)
 
+def _move_cursor_to_snap_position_center(
+    screen_number: int, 
+    pos
+):
+    """Move the cursor to a screen center.
+    Provide `screen_number` to specify a target screen.
+
+    """
+    assert (
+        screen_number
+    ), "Provide `screen_number`."
+
+    dest_screen = actions.user.screens_get_by_number(screen_number)
+    dest = dest_screen.visible_rect
+
+    x = dest.left + (dest.width * pos.left) + (dest.width * (pos.right - pos.left))/2
+    y = dest.top + (dest.height * pos.top) + (dest.height * (pos.bottom - pos.top))/2    
+    
+    _set_cursor_pos(x=x, y=y)
 
 def _snap_window_helper(window, pos):
     screen = window.screen.visible_rect
@@ -128,6 +155,10 @@ def _snap_window_helper(window, pos):
         y=screen.y + (screen.height * pos.top),
         width=screen.width * (pos.right - pos.left),
         height=screen.height * (pos.bottom - pos.top),
+    )
+    _set_cursor_pos(
+        x=screen.x + (screen.width * pos.left) + (screen.width * (pos.right - pos.left))/2,
+        y=screen.y + (screen.height * pos.top) + (screen.height * (pos.bottom - pos.top))/2,
     )
 
 
@@ -166,11 +197,17 @@ _snap_positions = {
     "dog": RelativeScreenPos(2 / 3, 0, 1, 1),
     "fat": RelativeScreenPos(0, 0, 2 / 3, 1),
     "large": RelativeScreenPos(1 / 3, 0, 1, 1,),
+    "teams": RelativeScreenPos(0, 1 / 3, 1, 2 / 3),
+    "kitty": RelativeScreenPos(0, 1 / 3, 1, 2 / 3),
+    "mousey": RelativeScreenPos(0, 0, 1, 1 / 3),
+    "mail": RelativeScreenPos(0, 2 / 3, 1, 1),
+    "doggy": RelativeScreenPos(0, 2 / 3, 1, 1),
+    "faty": RelativeScreenPos(0, 0, 1, 2 / 3),
+    "largy": RelativeScreenPos(0, 1 / 3, 1, 1,),
     # Forths
     # .-.-.-.-'
     # | | | | |
     # '-'-'-'-'
-    "teams": RelativeScreenPos(0, 0, 1 / 4, 1),
     "list": RelativeScreenPos(1/4, 0, 1 / 2, 1),
 
     # Quarters
@@ -185,10 +222,8 @@ _snap_positions = {
     # .--.--.--.
     # |--|--|--|
     # '--'--'--'
-    "log": RelativeScreenPos(0, 2/3, 1/3, 1 ),
-    "explore": RelativeScreenPos(0, 1/3, 1/3, 2/3 ),
-    "music": RelativeScreenPos(0, 0, 1/3, 1/3 ),
-    "phone": RelativeScreenPos(1/3, 0, 1/2, 2/3 ),
+    "log": RelativeScreenPos(1/2, 0, 1, 1 / 3),
+    "explorer": RelativeScreenPos(0, 0, 1/2, 1 / 3),
     # Special
     "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
     "full": RelativeScreenPos(0, 0, 1, 1),
@@ -215,6 +250,7 @@ class Actions:
         """
         _snap_window_helper(ui.active_window(), pos)
 
+
     def move_window_next_screen() -> None:
         """Move the active window to a specific screen."""
         _move_to_screen(ui.active_window(), offset=1)
@@ -226,6 +262,11 @@ class Actions:
     def move_window_to_screen(screen_number: int) -> None:
         """Move the active window leftward by one."""
         _move_to_screen(ui.active_window(), screen_number=screen_number)
+
+    def move_cursor_to_snap_position_center(screen_number: int, pos: RelativeScreenPos):
+        """Move the cursor to the snap position center."""
+        _move_cursor_to_snap_position_center(screen_number=screen_number,pos=pos)
+
 
     def snap_app(app_name: str, pos: RelativeScreenPos):
         """Snap a specific application to another screen."""

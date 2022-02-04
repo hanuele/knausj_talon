@@ -9,6 +9,3 @@ settings():
 	speech.record_labels = 0
 
 
-trump up: 
-    speech.enable()
-    user.play_TalonWake()

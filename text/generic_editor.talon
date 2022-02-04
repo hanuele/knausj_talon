@@ -31,10 +31,10 @@ go down:
     user.quick_macro_set("edit.down")
 
 
-go line start:
+go start:
     edit.line_start()
 
-go line end:
+go end:
     edit.line_end()
 
 go way left:

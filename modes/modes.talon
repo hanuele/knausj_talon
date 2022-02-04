@@ -1,9 +1,8 @@
 not mode: sleep
 -
-
-trump down: 
+^drowse$:
+    user.hud_add_log('command', 'Asleep')
     speech.disable()
-    user.play_IdLikeNotToButYouKnow()
 
 ^dictation mode$:
     mode.disable("sleep")
@@ -11,6 +10,7 @@ trump down:
     mode.enable("dictation")
     user.code_clear_language_mode()
     mode.disable("user.gdb")
+
 ^(command mode|Kommando modus)$:
     mode.disable("sleep")
     mode.disable("dictation")

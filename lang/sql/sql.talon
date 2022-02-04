@@ -63,6 +63,9 @@ where id in:
     key(up:1 tab)
     "''--"
     key(left:3)
+where id equals: 
+    "WHERE ID = ''"
+    key(left:1)
 
 add entry:
     key(enter:1)

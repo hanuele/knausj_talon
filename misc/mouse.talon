@@ -15,7 +15,7 @@ righty:
 	# close the mouse grid if open
 	user.grid_close()
 	user.quick_macro_set("mouse_click",0)
-midclick: 
+(midclick|new tab): 
 	mouse_click(2)
 	# close the mouse grid
 	user.grid_close()

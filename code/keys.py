@@ -135,10 +135,13 @@ punctuation_words = {
     "back tick": "`",
     "grave": "`",
     "comma": ",",
+    "spamma": ", ",
     "period": ".",
+    "stop": ". ",
     "full stop": ".",
     "semicolon": ";",
     "colon": ":",
+    "colgap": ": ",
     "forward slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
@@ -230,8 +233,7 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "delete": "backspace",
-    "forward delete": "delete",
+    "eat": "delete",
     'junk': 'backspace',
     "page up": "pageup",
     "page down": "pagedown",

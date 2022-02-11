@@ -294,14 +294,11 @@ class Actions:
                 return application
         raise RuntimeError(f'App not running: "{name}"')
 
-    def switcher_focus(name: str,phrase: Phrase = None):
+    def switcher_focus(name: str):
         """Focus a new application by name"""
         app = actions.user.get_running_app(name)
+        actions.sleep("250ms")
         actions.user.switcher_focus_app(app)
-
-        if phrase:
-            actions.sleep("200ms")
-            actions.user.rephrase(phrase)
 
     def switcher_focus_multiple(names: List[str], phrases: List[Phrase]):
         """Focus applications by name"""

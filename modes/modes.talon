@@ -1,8 +1,5 @@
 not mode: sleep
 -
-^drowse$:
-    user.hud_add_log('command', 'Asleep')
-    speech.disable()
 
 ^dictation mode$:
     mode.disable("sleep")

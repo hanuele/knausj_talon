@@ -20,7 +20,7 @@ case when:
     "CASE WHEN  END "
     key(left:4)
 create table: "CREATE TABLE "
-#delete: "DELETE "
+danger: "DELETE "
 distinct: "DISTINCT "
 from: "FROM "
 for system time: "FOR SYSTEM TIME "
@@ -56,14 +56,14 @@ update: "UPDATE "
 using: "USING "
 value null: "NULL "
 where$: "WHERE "
-where id in: 
+where i dee in: 
     "WHERE ID IN ("
     key(enter:2)
     ")"
     key(up:1 tab)
     "''--"
     key(left:3)
-where id equals: 
+where i dee equals: 
     "WHERE ID = ''"
     key(left:1)
 
@@ -73,7 +73,7 @@ add entry:
     insert(clip.text())
     "', -- "
 
-where target id in: 
+where target i dee in: 
     "WHERE TargetID IN ("
     key(enter:2)
     ")"
@@ -128,3 +128,10 @@ get changes:
 
 get version:
     "SELECT @@version"
+
+table <user.datatable>$:
+	insert('{datatable} ')
+
+
+clear WASP dashboard:
+	insert("delete FROM ttx_lookups WHERE title like 'WASP Dashboard -%';-- Delete superfluous test scripts")

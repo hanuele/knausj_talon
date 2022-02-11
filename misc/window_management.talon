@@ -6,8 +6,11 @@ window close: app.window_close()
 (minimize | mini): app.window_hide()
 (maximize | maxi): user.maximize()
 
-#focus <user.running_applications>: user.switcher_focus(running_applications)
-focus <user.running_applications> <phrase>$: user.switcher_focus(running_applications, phrase)
+focus <user.running_applications> [<phrase>]$:
+    user.switcher_focus(running_applications)
+    sleep(200ms)
+    user.parse_phrase(phrase or "")
+
 # following only works on windows. Can't figure out how to make it work for mac. No idea what the equivalent for linux would be.
 focus$: user.switcher_menu()
 running list: user.switcher_toggle_running()
@@ -16,20 +19,36 @@ running close: user.switcher_hide_running()
 visible close: user.switcher_hide_visible()
 launch <user.launch_applications>: user.switcher_launch(launch_applications)
 
-snap <user.window_snap_position>: user.snap_window(window_snap_position)
-snap next [screen]: user.move_window_next_screen()
-snap last [screen]: user.move_window_previous_screen()
-snap screen <number>: user.move_window_to_screen(number)
-snap <user.running_applications> <user.window_snap_position>:
-    user.snap_app(running_applications, window_snap_position)
-snap <user.running_applications> [screen] <number>:
-    user.move_app_to_screen(running_applications, number)
+#snap <user.window_snap_position>: user.snap_window(window_snap_position)
+#snap next [screen]: user.move_window_next_screen()
+#snap last [screen]: user.move_window_previous_screen()
+#snap screen <number>: user.move_window_to_screen(number)
+#snap <user.running_applications> <user.window_snap_position>:
+#    user.snap_app(running_applications, window_snap_position)
+#snap <user.running_applications> [screen] <number>:
+#    user.move_app_to_screen(running_applications, number)
 
-snap <number> <user.window_snap_position>: 
-    user.move_window_to_screen(number)
-    sleep(0.5)
-    user.snap_window(window_snap_position)
+#snap <number> <user.window_snap_position>: 
+#    user.move_window_to_screen(number)
+#    sleep(0.5)
+#    user.snap_window(window_snap_position)
+#
+#target <number> <user.window_snap_position>: 
+#    user.move_cursor_to_snap_position_center(number, window_snap_position)
+#    mouse_click(0)
 
-target <number> <user.window_snap_position>: 
-    user.move_cursor_to_snap_position_center(number, window_snap_position)
-    mouse_click(0)
+snapper:
+    key(super-right)
+    user.quick_macro_set("key","super-right")
+
+lepper:
+    key(super-left)
+    user.quick_macro_set("key","super-left")
+
+snupper:
+    key(super-up)
+    user.quick_macro_set("key","super-up")
+
+dupper:
+    key(super-down)
+    user.quick_macro_set("key","super-down")

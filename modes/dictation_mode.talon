@@ -79,3 +79,12 @@ spell that <user.formatters> <user.letters>:
 # Escape, type things that would otherwise be commands
 ^escape <user.text>$:
     auto_insert(user.text)
+
+numb <user.number_string>: "{number_string}"
+numb <user.number_string> point <digit_string>: "{number_string}.{digit_string}"
+
+halt [<phrase>]$:
+    mode.disable("sleep")
+    mode.disable("dictation")
+    mode.enable("command")
+    user.parse_phrase(phrase or "")

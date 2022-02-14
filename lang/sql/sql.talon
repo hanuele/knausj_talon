@@ -56,14 +56,14 @@ update: "UPDATE "
 using: "USING "
 value null: "NULL "
 where$: "WHERE "
-where i dee in: 
+where ID in: 
     "WHERE ID IN ("
     key(enter:2)
     ")"
     key(up:1 tab)
     "''--"
     key(left:3)
-where i dee equals: 
+where ID equals: 
     "WHERE ID = ''"
     key(left:1)
 
@@ -73,7 +73,7 @@ add entry:
     insert(clip.text())
     "', -- "
 
-where target i dee in: 
+where target ID in: 
     "WHERE TargetID IN ("
     key(enter:2)
     ")"
@@ -85,6 +85,7 @@ with as:
     " WITH  AS ()"
     key(left enter:2 up:2 end left:5)
 semi: key(end ;)
+comment out: key(home - -) 
 with no lock: " WITH (NOLOCK) "
 declare unique: 
     "DECLARE @variable uniqueidentifier = '';"

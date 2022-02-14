@@ -3,8 +3,22 @@ window next: app.window_next()
 window last: app.window_previous()
 window close: app.window_close()
 
-(minimize | mini): app.window_hide()
-(maximize | maxi): user.maximize()
+(minimize | mini): 
+    key(alt-space)
+    sleep(0.05)
+    key(n)
+
+    #app.window_hide()
+(maximize | maxi): 
+    key(alt-space)
+    sleep(0.05)
+    key(x)    
+    #user.maximize()
+
+normal:
+    key(alt-space)
+    sleep(0.05)
+    key(r)
 
 focus <user.running_applications> [<phrase>]$:
     user.switcher_focus(running_applications)
@@ -19,10 +33,10 @@ running close: user.switcher_hide_running()
 visible close: user.switcher_hide_visible()
 launch <user.launch_applications>: user.switcher_launch(launch_applications)
 
-#snap <user.window_snap_position>: user.snap_window(window_snap_position)
-#snap next [screen]: user.move_window_next_screen()
+snap <user.window_snap_position>: user.snap_window(window_snap_position)
+#snap next [screen]: user.move_window_next_screen()n
 #snap last [screen]: user.move_window_previous_screen()
-#snap screen <number>: user.move_window_to_screen(number)
+#snap screen <number>: user.move_window_to_screen(nnumber)
 #snap <user.running_applications> <user.window_snap_position>:
 #    user.snap_app(running_applications, window_snap_position)
 #snap <user.running_applications> [screen] <number>:
@@ -32,23 +46,23 @@ launch <user.launch_applications>: user.switcher_launch(launch_applications)
 #    user.move_window_to_screen(number)
 #    sleep(0.5)
 #    user.snap_window(window_snap_position)
-#
+#n
 #target <number> <user.window_snap_position>: 
 #    user.move_cursor_to_snap_position_center(number, window_snap_position)
 #    mouse_click(0)
 
-snapper:
+westen:
     key(super-right)
     user.quick_macro_set("key","super-right")
 
-lepper:
+osten:
     key(super-left)
     user.quick_macro_set("key","super-left")
 
-snupper:
+norden:
     key(super-up)
     user.quick_macro_set("key","super-up")
 
-dupper:
+sueden:
     key(super-down)
     user.quick_macro_set("key","super-down")

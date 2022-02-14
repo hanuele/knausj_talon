@@ -15,7 +15,7 @@ righty:
 	# close the mouse grid if open
 	user.grid_close()
 	user.quick_macro_set("mouse_click",0)
-(midclick|new tab): 
+(midclick|new tab) that: 
 	mouse_click(2)
 	# close the mouse grid
 	user.grid_close()
@@ -63,7 +63,7 @@ right drag | righty drag:
 	user.mouse_drag(1)
 	# close the mouse grid
 	user.grid_close()
-end drag | drag end:
+dragon | drag end:
     user.mouse_drag_end()
 
 wheel down here:

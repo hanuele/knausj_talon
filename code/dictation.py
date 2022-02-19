@@ -8,7 +8,7 @@ mod = Module()
 setting_context_sensitive_dictation = mod.setting(
     "context_sensitive_dictation",
     type=bool,
-    default=False,
+    default=True,
     desc="Look at surrounding text to improve auto-capitalization/spacing in dictation mode. By default, this works by selecting that text & copying it to the clipboard, so it may be slow or fail in some applications.",
 )
 

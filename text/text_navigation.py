@@ -33,7 +33,7 @@ ctx.lists["self.navigation_action"] = {
     "select": "SELECT",
     "clear": "DELETE",
     "cut": "CUT",
-    "copy": "COPY",
+    "push": "COPY",
 }
 ctx.lists["self.before_or_after"] = {
     "before": "BEFORE",
@@ -47,13 +47,13 @@ navigation_target_names = {
     "parens": r'\((.*?)\)',
     "squares": r'\[(.*?)\]',
     "braces": r'\{(.*?)\}',
-    "dub": r'\"(.*?)\"',
+    "duke": r'\"(.*?)\"',
     "angles": r'\<(.*?)\>',
     "quotes": r'\'(.*?)\'',
     "all": r'(.+)',
     "method": r'\w+\((.*?)\)',
     "constant": r'[A-Z_][A-Z_]+',
-    "unique": r'\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'
+    "unique": r'\b[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-\b[0-9a-fA-F]{12}\b'
 }
 ctx.lists["self.navigation_target_name"] = navigation_target_names
 

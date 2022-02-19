@@ -1,3 +1,4 @@
+mode: command
 os: windows
 app: microsoft_edge
 win.title: /18027c26-f8c8-4ff3-8875-119e480336e6/

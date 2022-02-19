@@ -1,3 +1,7 @@
+mode: command
+mode: mixed
+-
+
 ^grab screen$:                       user.screenshot()
 ^grab screen <number_small>$:        user.screenshot(number_small)
 ^grab window$:                       user.screenshot_window()

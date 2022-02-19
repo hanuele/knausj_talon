@@ -297,7 +297,7 @@ class Actions:
     def switcher_focus(name: str):
         """Focus a new application by name"""
         app = actions.user.get_running_app(name)
-        actions.sleep("250ms")
+        actions.sleep("500ms")
         actions.user.switcher_focus_app(app)
 
     def switcher_focus_multiple(names: List[str], phrases: List[Phrase]):

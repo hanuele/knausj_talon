@@ -82,7 +82,7 @@ setting_mouse_hide_mouse_gui = mod.setting(
 setting_mouse_continuous_scroll_amount = mod.setting(
     "mouse_continuous_scroll_amount",
     type=int,
-    default=80,
+    default=120,
     desc="The default amount used when scrolling continuously",
 )
 setting_mouse_wheel_down_amount = mod.setting(

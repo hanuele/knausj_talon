@@ -1,5 +1,7 @@
 experiment: anchor-file
 mode: dictation
+language: de_DE
+language: en_US
 -
 
 settings(): 

@@ -1,7 +1,13 @@
-window (new|open): app.window_open()
-window next: app.window_next()
-window last: app.window_previous()
-window close: app.window_close()
+mode: command
+mode: mixed
+language: de_DE
+language: en_US
+-
+
+(window open|Fenster öffnen): app.window_open()
+(window next|nächstes Fenster): app.window_next()
+(window last|vorheriges Fenster): app.window_previous()
+(window close|Fenster schliessen): app.window_close()
 
 (minimize | mini): 
     key(alt-space)
@@ -66,3 +72,4 @@ norden:
 sueden:
     key(super-down)
     user.quick_macro_set("key","super-down")
+

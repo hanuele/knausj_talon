@@ -1,3 +1,9 @@
+mode: command
+mode: mixed
+language: de_DE
+language: en_US
+-
+
 (jay son | jason ): "json"
 #(http | htp): "http"
 #tls: "tls"
@@ -11,72 +17,72 @@ word queue: "queue"
 #word dup: "dup"
 #word shell: "shell".
 
-zoom [in]: 
+(zoom [in]|vergrößern): 
 	edit.zoom_in()
 	user.quick_macro_set("edit.zoom_in")
 
-zoom out: 
+(zoom out|verkleinern): 
 	edit.zoom_out()
 	user.quick_macro_set("edit.zoom_out")
 
-(page | scroll) up: 
+(page up|Seite hoch): 
 	key(pgup)
 	user.quick_macro_set("key","pgup")
 
-(page | scroll) down: 
+(page down|Seite runter): 
 	key(pgdown)
 	user.quick_macro_set("key","pgdown")
 
-push end:
+(push end|zum Ende merken):
 	edit.extend_line_end()
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 
-push start:
+(push start|zum Anfang merken):
 	edit.extend_line_start()
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 		
 		
-push: 
+(push|merken): 
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 
-push all:
+(push all|alles merken):
 	edit.select_all() 
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 
-cut: 
+(cut|ausschneiden): 
 	edit.cut()
 	user.quick_macro_set("edit.paste")
 
 
-pull: 
+(drop|einfügen): 
 	edit.paste()
 	user.quick_macro_set("edit.paste")
 
-push match: 
+(push match|formattiert einfügen): 
 	edit.paste_match_style()
 	user.quick_macro_set("edit.paste_match_style")
 
-disk: edit.save()
-disk all: edit.save_all()
+(disk|speichern): edit.save()
+(disk all|alles speichern): edit.save_all()
 
-(revert|virt|nope): 
+(revert|virt|nope|ungewollt|rüchgängig): 
 	edit.undo()
 	user.quick_macro_set("edit.undo")
 
-(again|gen): 
+(again|gen|wiederholen): 
 	edit.redo()
 	user.quick_macro_set("edit.redo")
 
-(wipe | junk): 
+(wipe | junk|weg): 
 	key(backspace)
 	user.quick_macro_set("key","backspace")
 
-(pad | padding): 
+(pad | padding|einrücken): 
 	insert("  ") 
 	key(left)
 
-slap: edit.line_insert_down()	
+(slap|Zeilenwechsel): edit.line_insert_down()

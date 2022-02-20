@@ -1,7 +1,5 @@
 mode: command
 mode: mixed
-language: de_DE
-language: en_US
 -
 
 (jay son | jason ): "json"

@@ -3,6 +3,12 @@ from typing import Set
 from talon import Module, Context, actions, app
 import sys
 
+mod = Module()
+ctx = Context()
+ctx.matches = r"""
+language: en_US
+"""
+
 default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
@@ -14,7 +20,7 @@ default_f_digits = "one two three four five six seven eight nine ten eleven twel
     " "
 )
 
-mod = Module()
+
 mod.list("letter", desc="The spoken phonetic alphabet")
 mod.list("symbol_key", desc="All symbols from the keyboard")
 mod.list("arrow_key", desc="All arrow keys")
@@ -110,7 +116,7 @@ def letters(m) -> str:
     return "".join(m.letter_list)
 
 
-ctx = Context()
+
 modifier_keys = {
     # If you find 'alt' is often misrecognized, try using 'alter'.
     "alt": "alt",  #'alter': 'alt',

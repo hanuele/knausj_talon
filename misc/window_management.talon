@@ -1,7 +1,5 @@
 mode: command
 mode: mixed
-language: de_DE
-language: en_US
 -
 
 (window open|Fenster öffnen): app.window_open()

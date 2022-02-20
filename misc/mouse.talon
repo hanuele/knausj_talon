@@ -1,6 +1,4 @@
-language: de_DE
-language: en_US
--
+
 (control mouse|Mauskontrollmodus): user.mouse_toggle_control_mouse()
 (zoom mouse|Mauszoommodus): user.mouse_toggle_zoom_mouse()
 (camera overlay|Kameraüberblendung): user.mouse_toggle_camera_overlay()

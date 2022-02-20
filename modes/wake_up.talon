@@ -1,11 +1,10 @@
 #defines the commands that sleep/wake Talon
-language: de_DE
 language: en_US
 -
-(drowse|dösen) [<phrase>]$: 
+drowse [<phrase>]$: 
     user.sleep_all()
     user.hud_add_log('command', 'Asleep')
-(drowse|dösen) <phrase> (resume|und weiter)$: skip()
+drowse <phrase> resume$: skip()
 
 
 key(f22):

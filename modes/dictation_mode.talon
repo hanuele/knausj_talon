@@ -1,7 +1,6 @@
-experiment: anchor-file
 mode: dictation
-language: de_DE
 language: en_US
+experiment: anchor-file
 -
 
 settings(): 
@@ -22,7 +21,7 @@ cap: user.dictation_format_cap()
 ^(no cap | no-caps) that$: user.dictation_reformat_no_cap()
 ^(no space | no-space) that$: user.dictation_reformat_no_space()
 
-# Navigation
+# Navigations
 go up <number_small> (line|lines):
     edit.up()
     repeat(number_small - 1)

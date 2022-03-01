@@ -8,9 +8,9 @@ from talon import Module
 import re
 
 from .extensions import file_extensions
-from ...hanuele_talon.talon_voice.misc.numbers.numbers_en import digits_map, teens, scales, tens
-from .abbreviate import abbreviations
-from ...hanuele_talon.talon_voice.misc.keys.keys_en import symbol_key_words
+from .numbers_en import digits_map, teens, scales, tens
+from .abbreviate_en import abbreviations
+from .keys_en import symbol_key_words
 
 mod = Module()
 

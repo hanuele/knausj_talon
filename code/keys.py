@@ -3,12 +3,6 @@ from typing import Set
 from talon import Module, Context, actions, app
 import sys
 
-mod = Module()
-ctx = Context()
-#ctx.matches = r"""
-#language: en_US
-#"""
-
 default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
@@ -20,7 +14,7 @@ default_f_digits = "one two three four five six seven eight nine ten eleven twel
     " "
 )
 
-
+mod = Module()
 mod.list("letter", desc="The spoken phonetic alphabet")
 mod.list("symbol_key", desc="All symbols from the keyboard")
 mod.list("arrow_key", desc="All arrow keys")
@@ -33,7 +27,7 @@ mod.list("punctuation", desc="words for inserting punctuation into text")
 
 @mod.capture(rule="{self.modifier_key}+")
 def modifiers(m) -> str:
-    "One or more modifier keys" 
+    "One or more modifier keys"
     return "-".join(m.modifier_key_list)
 
 
@@ -55,13 +49,11 @@ def number_key(m) -> str:
     return m.number_key
 
 
-@mod.capture
-def letter() -> str:
-    """One letter in the alphabet"""
-
-@ctx.capture("user.letter", rule="{self.letter}")
+@mod.capture(rule="{self.letter}")
 def letter(m) -> str:
-    return str(m)
+    "One letter key"
+    return m.letter
+
 
 @mod.capture(rule="{self.special_key}")
 def special_key(m) -> str:
@@ -81,12 +73,9 @@ def function_key(m) -> str:
     return m.function_key
 
 
-@mod.capture
-def any_alphanumeric_key() -> str:
-    """any alphanumeric key"""
-
-@ctx.capture("user.any_alphanumeric_key", rule="( <self.letter> | <self.number_key> | <self.symbol_key> )")
+@mod.capture(rule="( <self.letter> | <self.number_key> | <self.symbol_key> )")
 def any_alphanumeric_key(m) -> str:
+    "any alphanumeric key"
     return str(m)
 
 
@@ -115,15 +104,13 @@ def keys(m) -> str:
     return " ".join(m.key_list)
 
 
-@mod.capture
-def letters() -> str:
-    """One or more letters in the alphabet"""
-
-@ctx.capture("user.letters", rule="{self.letter}+")
+@mod.capture(rule="{self.letter}+")
 def letters(m) -> str:
+    "Multiple letter keys"
     return "".join(m.letter_list)
 
 
+ctx = Context()
 modifier_keys = {
     # If you find 'alt' is often misrecognized, try using 'alter'.
     "alt": "alt",  #'alter': 'alt',
@@ -148,13 +135,10 @@ punctuation_words = {
     "back tick": "`",
     "grave": "`",
     "comma": ",",
-    "spamma": ", ",
     "period": ".",
-    "stop": ". ",
     "full stop": ".",
     "semicolon": ";",
     "colon": ":",
-    "colgap": ": ",
     "forward slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
@@ -186,7 +170,6 @@ symbol_key_words = {
     "minus": "-",
     "dash": "-",
     "equals": "=",
-    "spequels": "= ",
     "plus": "+",
     "tilde": "~",
     "bang": "!",
@@ -247,12 +230,11 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "eat": "delete",
-    'junk': 'backspace',
+    "delete": "backspace",
+    "forward delete": "delete",
+    #'junk': 'backspace',
     "page up": "pageup",
     "page down": "pagedown",
-    "gap": "space",
-    "next": "tab"
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):

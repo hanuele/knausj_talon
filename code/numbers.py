@@ -3,21 +3,18 @@ from typing import List, Optional, Union, Iterator
 
 mod = Module()
 ctx = Context()
-ctx.matches = r"""
-language: de_DE
-"""
 
-digits = "null eins zwei drei vier fünf sechs sieben acht neun".split()
-teens = "elf zwölf dreizehn vierzehn fünfzehn sechzehn siebzehn achtzehn neunzehn".split()
-tens = "zehn zwanzig dreissig vierzig fünfzig sechzig siebzig achtzig neunzig".split()
-scales = "hundert tausend".split()
-scales_einzahl = "hundert tausend"
+digits = "zero one two three four five six seven eight nine".split()
+teens = "ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+tens = "twenty thirty forty fifty sixty seventy eighty ninety".split()
+scales = "hundred thousand million billion trillion quadrillion quintillion sextillion septillion octillion nonillion decillion".split()
+
 digits_map = {n: i for i, n in enumerate(digits)}
-digits_map["nullen"] = 0
-teens_map = {n: i + 11 for i, n in enumerate(teens)}
-tens_map = {n: 10 * (i + 1) for i, n in enumerate(tens)}
+digits_map["oh"] = 0
+teens_map = {n: i + 10 for i, n in enumerate(teens)}
+tens_map = {n: 10 * (i + 2) for i, n in enumerate(tens)}
 scales_map = {n: 10 ** (3 * (i+1)) for i, n in enumerate(scales[1:])}
-scales_map["hundert"] = 100
+scales_map["hundred"] = 100
 
 numbers_map = digits_map.copy()
 numbers_map.update(teens_map)
@@ -35,17 +32,18 @@ def scan_small_numbers(l: List[str]) -> Iterator[Union[str,int]]:
     """
     Takes a list of number words, yields a generator of mixed numbers & strings.
     Translates small number terms (<100) into corresponding numbers.
-    Drops all occurrences of "und".
-    Smashes digits onto tens words, eg. ["eins", "zwanzig"] -> [21].
-    But note that "null" is excluded, ie:
-      ["fünfzig", "null"] -> [50, 0]
-    Does nothing to scale words ("hundert", "tausend", "millionen", etc).
+    Drops all occurrences of "and".
+    Smashes digits onto tens words, eg. ["twenty", "one"] -> [21].
+    But note that "ten" and "zero" are excluded, ie:
+      ["ten", "three"] -> [10, 3]
+      ["fifty", "zero"] -> [50, 0]
+    Does nothing to scale words ("hundred", "thousand", "million", etc).
     """
     # reversed so that repeated pop() visits in left-to-right order
-    l = [x for x in reversed(l) if x != "und"]
+    l = [x for x in reversed(l) if x != "and"]
     while l:
         n = l.pop()
-        # fuse tens onto digits, eg. "ein", "zwanzig" -> 21
+        # fuse tens onto digits, eg. "twenty", "one" -> 21
         if n in tens_map and l and digits_map.get(l[-1], 0) != 0:
             d = l.pop()
             yield numbers_map[n] + numbers_map[d]
@@ -61,15 +59,15 @@ def parse_scale(scale: str, l: List[Union[str,int]]) -> List[Union[str,int]]:
 
         <multiplier> <scale> <remainder>
 
-    where <scale> is a scale word like "hundert", "tausend", "millionen" "million", etc and
+    where <scale> is a scale word like "hundred", "thousand", "million", etc and
     multiplier and remainder are numbers or strings of numbers of the
     appropriate size. For example:
 
-        parse_scale("hundred", [1, "hundert", 2]) -> [102]
-        parse_scale("thousand", [12, "tausend", 3, 45]) -> [12345]
+        parse_scale("hundred", [1, "hundred", 2]) -> [102]
+        parse_scale("thousand", [12, "thousand", 3, 45]) -> [12345]
 
     We assume that all scales of lower magnitude have already been parsed; don't
-    call parse_scale("tausend") until you've called parse_scale("hundert").
+    call parse_scale("thousand") until you've called parse_scale("hundred").
     """
     scale_value = scales_map[scale]
     scale_digits = len(str(scale_value))
@@ -79,15 +77,15 @@ def parse_scale(scale: str, l: List[Union[str,int]]) -> List[Union[str,int]]:
     for right in splits:
         # (1) Figure out the multiplier by looking to the left of the scale
         # word. We ignore non-integers because they are scale words that we
-        # haven't processed yet; this strategy means that "tausend hundert"
-        # gets parsed as 1,100 instead of 100,000, but "hundert tausend" is
+        # haven't processed yet; this strategy means that "thousand hundred"
+        # gets parsed as 1,100 instead of 100,000, but "hundred thousand" is
         # parsed correctly as 100,000.
         before = 1 # default multiplier
         if left and isinstance(left[-1], int) and left[-1] != 0:
             before = left.pop()
 
-        # (2) Absorb numbers to the right, eg. in [1, "tausend", 1, 26], "1
-        # tausend" absorbs ["1", "26"] to make 1,126. We pull numbers off
+        # (2) Absorb numbers to the right, eg. in [1, "thousand", 1, 26], "1
+        # thousand" absorbs ["1", "26"] to make 1,126. We pull numbers off
         # `right` until we fill up the desired number of digits.
         after = ""
         while right and isinstance(right[0], int):
@@ -114,7 +112,7 @@ def split_list(value, l: list) -> Iterator:
         start = i+1
     yield l[start:]
 
-
+
 # # ---------- TESTS (uncomment to run) ----------
 # def test_number(expected, string):
 #     print('testing:', string)
@@ -150,7 +148,7 @@ def split_list(value, l: list) -> Iterator:
 # #test_number(100001010, "one million ten ten")
 # #test_number(1050006000, "one hundred thousand and five thousand and six thousand")
 
-
+
 # ---------- CAPTURES ----------
 alt_digits = "(" + ("|".join(digits_map.keys())) + ")"
 alt_teens = "(" + ("|".join(teens_map.keys())) + ")"
@@ -171,33 +169,21 @@ def digits(m) -> int:
     """Parses a phrase representing a digit sequence, returning it as an integer."""
     return int(m.digit_string)
 
-@mod.capture
-def number_string() -> str:
-    """Parses a number phrase, returning that number as a string."""
-
-@ctx.capture("user.number_string", rule=f"{number_word_leading} ([und] {number_word})*")
+@mod.capture(rule=f"{number_word_leading} ([and] {number_word})*")
 def number_string(m) -> str:
+    """Parses a number phrase, returning that number as a string."""
     return parse_number(list(m))
 
-
-@mod.capture
-def number() -> int:
-    """Parses a number phrase, returning it as an integer."""
 @ctx.capture("number", rule="<user.number_string>")
 def number(m) -> int:
+    """Parses a number phrase, returning it as an integer."""
     return int(m.number_string)
 
-@mod.capture
-def number_signed() -> int:
-    """Parses a number phrase, returning it as an integer."""
-@ctx.capture("number_signed", rule=f"[negativ|minus] <number>")
+@ctx.capture("number_signed", rule=f"[negative|minus] <number>")
 def number_signed(m):
     number = m[-1]
-    return -number if (m[0] in ["negativ", "minus"]) else number
+    return -number if (m[0] in ["negative", "minus"]) else number
 
-@mod.capture
-def number_small() -> int:
-    """Parses a number phrase, returning it as a small number."""
 @ctx.capture(
     "number_small", rule=f"({alt_digits} | {alt_teens} | {alt_tens} [{alt_digits}])"
 )

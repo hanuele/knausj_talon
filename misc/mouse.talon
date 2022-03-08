@@ -1,9 +1,9 @@
 
-(control mouse|Mauskontrollmodus): user.mouse_toggle_control_mouse()
-(zoom mouse|Mauszoommodus): user.mouse_toggle_zoom_mouse()
-(camera overlay|Kameraüberblendung): user.mouse_toggle_camera_overlay()
-(run calibration|Maus kalibrieren): user.mouse_calibrate()	
-(pick|Auswahl): 
+control mouse: user.mouse_toggle_control_mouse()
+zoom mouse: user.mouse_toggle_zoom_mouse()
+camera overlay: user.mouse_toggle_camera_overlay()
+run calibration: user.mouse_calibrate()	
+pick: 
 	mouse_click(0)
 	# close the mouse grid if open
 	user.grid_close()
@@ -11,12 +11,12 @@
 	# Touch automatically ends left drags so this is for right drags specifically
 	user.mouse_drag_end()
 
-(righty|Rechtsklick):
+righty:
 	mouse_click(1)
 	# close the mouse grid if open
 	user.grid_close()
 	user.quick_macro_set("mouse_click",0)
-(midclick|open that|Mittelklick): 
+(midclick|open that): 
 	mouse_click(2)
 	# close the mouse grid
 	user.grid_close()
@@ -29,94 +29,94 @@
 #option = alt
 #shift
 #super = windows key
-<user.modifiers> (pick|Auswahl): 
+<user.modifiers> pick: 
 	key("{modifiers}:down")
 	mouse_click(0)
 	key("{modifiers}:up")
 	# close the mouse grid
 	user.grid_close()
-<user.modifiers> (righty|Rechtsklick): 
+<user.modifiers> righty: 
 	key("{modifiers}:down")
 	mouse_click(1)
 	key("{modifiers}:up")
 	# close the mouse grid
 	user.grid_close()
-(dubclick | duke|Doppelklick): 
+(dubclick | duke): 
 	mouse_click()
 	mouse_click()
 	# close the mouse grid
 	user.grid_close()
-(tripclick | triplick|Dreifachklick): 
+(tripclick | triplick): 
 	mouse_click()
 	mouse_click()
 	mouse_click()
 	# close the mouse grid
 	user.grid_close()
-(left drag | drag | ziehen):
+(left drag | drag):
 	user.mouse_drag(0)
 	# close the mouse grid
 	user.grid_close()
-(wheel down| rad runter): 
+wheel down: 
 	user.mouse_scroll_down()
 	user.quick_macro_set("user.mouse_scroll_down",3)
 
-(right drag | righty drag|rechts ziehen):
+(right drag | righty drag):
 	user.mouse_drag(1)
 	# close the mouse grid
 	user.grid_close()
-(dragon | drag end | loslassen):
+(dragon | drag end):
     user.mouse_drag_end()
 
-(wheel down here|rad hier runter):
+wheel down here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down()
-(wheel tiny [down]|ein bisschen runter): user.mouse_scroll_down(0.2)
-(wheel tiny [down] here|hier ein bisschen runter):
+wheel tiny [down]: user.mouse_scroll_down(0.2)
+wheel tiny [down] here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down(0.2)
-(wheel downer|Rad tiefer): user.mouse_scroll_down_continuous()
-(wheel downer here|Rad hier tiefer):
+wheel downer: user.mouse_scroll_down_continuous()
+wheel downer here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down_continuous()
-(wheel up|Rad hoch): 
+wheel up: 
 	user.mouse_scroll_up()
 	user.quick_macro_set("user.mouse_scroll_up",3)
 
-(wheel up here|Rad hier hoch):
+wheel up here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_up()
-(wheel tiny up|ein bisschen hoch): user.mouse_scroll_up(0.2)
-(wheel tiny up here|hier ein bisschen hoch):
+wheel tiny up: user.mouse_scroll_up(0.2)
+wheel tiny up here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_up(0.2)
-(wheel upper|Rad höher): user.mouse_scroll_up_continuous()
-(wheel upper here|Rad hier höher):
+wheel upper: user.mouse_scroll_up_continuous()
+wheel upper here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_up_continuous()
-(wheel gaze|Radstarre): user.mouse_gaze_scroll()
-(wheel gaze here|hier Radstarre):
+wheel gaze: user.mouse_gaze_scroll()
+wheel gaze here:
     user.mouse_move_center_active_window()
     user.mouse_gaze_scroll()
-(wheel stop|Rad stop): user.mouse_scroll_stop()
-(wheel stop here|Rad stop hier):
+wheel stop: user.mouse_scroll_stop()
+wheel stop here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_stop()
-(wheel left|Rad links): user.mouse_scroll_left()
-(wheel left here|Rad hier links):
+wheel left: user.mouse_scroll_left()
+wheel left here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_left()
-(wheel tiny left|ein bisschen links): user.mouse_scroll_left(0.5)
-(wheel tiny left here|hier ein bisschen links):
+wheel tiny left: user.mouse_scroll_left(0.5)
+wheel tiny left here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_left(0.5)
-(wheel right|Rad rechts): user.mouse_scroll_right()
-(wheel right here|Rad hier rechts):
+wheel right: user.mouse_scroll_right()
+wheel right here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_right()
-(wheel tiny right|ein bisschen rechts): user.mouse_scroll_right(0.5)
-(wheel tiny right here|hier ein bisschen rechts):
+wheel tiny right: user.mouse_scroll_right(0.5)
+wheel tiny right here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_right(0.5)
-(copy mouse position|merke Mausposition): user.copy_mouse_position()
+copy mouse position: user.copy_mouse_position()
 
-(center mouse|Maus mittig): user.mouse_move_center_active_window()
+center mouse: user.mouse_move_center_active_window()

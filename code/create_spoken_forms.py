@@ -9,7 +9,7 @@ import re
 
 from .extensions import file_extensions
 from .numbers import digits_map, teens, scales, tens
-from .abbreviate_en import abbreviations
+from .abbreviate import abbreviations
 from .keys import symbol_key_words
 
 mod = Module()

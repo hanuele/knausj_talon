@@ -9,19 +9,19 @@ mode: mixed
 
 (minimize | mini): 
     key(alt-space)
-    sleep(0.05)
+    sleep(0.1)
     key(n)
 
     #app.window_hide()
 (maximize | maxi): 
     key(alt-space)
-    sleep(0.05)
+    sleep(0.1)
     key(x)    
     #user.maximize()
 
 normal:
     key(alt-space)
-    sleep(0.05)
+    sleep(0.1)
     key(r)
 
 focus <user.running_applications> [<phrase>]$:

@@ -8,7 +8,7 @@ settings():
 
 push id:
 	key(esc c c)
-	sleep(0.05)
+	sleep(0.1)
 	user.get_id(clip.text())
 
 drop id$:
@@ -29,7 +29,7 @@ add hour stamp$:
 
 todo <number> tag <user.text>$:
 	edit.jump_line(number)
-	sleep(0.05)
+	sleep(0.1)
 	edit.line_end()
 	key(enter)
 	insert(user.time_format("// #ToDo by Peter Linder %Y/%m/%d : {text}"))
@@ -120,7 +120,7 @@ dev mode$:
 
 (prep|prepare) doc entry$:
 	key(esc c t)
-	sleep(0.05)
+	sleep(0.1)
 	user.prepareDocEntry(clip.text())
 
 link$:
@@ -128,13 +128,13 @@ link$:
 	
 set global <user.letter>$:
 	key(esc m)
-	sleep(0.05)
+	sleep(0.1)
 	insert(letter)
 	key(enter)
 
 go global <user.letter>$:
 	key(esc g)
-	sleep(0.05)
+	sleep(0.1)
 	insert(letter)
 	key(enter)
 
@@ -152,37 +152,37 @@ sueden$:
 
 (minimize | mini)$: 
     key(alt-space)
-    sleep(0.05)
+    sleep(0.1)
     key(n)
 
     #app.window_hide()
 (maximize | maxi)$: 
     key(alt-space)
-    sleep(0.05)
+    sleep(0.1)
     key(x)    
     #user.maximize()
 
 normal$:
     key(alt-space)
-    sleep(0.05)
+    sleep(0.1)
     key(r)
 
 open in <user.navigationurls>$:
     key(esc c c)
-    sleep(0.05)
+    sleep(0.1)
     uuid = user.get_objectId(clip.text())
-    sleep(0.05)
+    sleep(0.1)
     user.open_website("{navigationurls}{uuid}")
 
 # Jump to object Id in selected CrossLoom application instance.
 seek in <user.navigationurls>$:
     uuid = edit.selected_text()
-    sleep(0.05)
+    sleep(0.1)
     user.open_website("{navigationurls}{uuid}")
 
 seek clip in <user.navigationurls>$:
     uuid = clip.text()
-    sleep(0.05)
+    sleep(0.1)
     user.open_website("{navigationurls}{uuid}")
 
 my umt user id$:
@@ -206,9 +206,9 @@ global search this <user.text>$:
 
 global search id$: 
 	key(esc c c)
-	sleep(0.05)
+	sleep(0.1)
 	user.get_id(clip.text())
-	sleep(0.05)
+	sleep(0.1)
 	user.global_search_text(clip.text())
 	
 
@@ -216,7 +216,7 @@ global search clip$:
 	user.get_id(clip.text())
 	sleep(0.1)
 	key(esc)
-	sleep(0.05)
+	sleep(0.1)
 	user.global_search_text(clip.text())
 	
 
@@ -233,9 +233,9 @@ find prev$:
 
 find clip$:
 	key(ctrl-f)
-	sleep(0.05)
+	sleep(0.1)
 	key(ctrl-v)
-	sleep(0.05)
+	sleep(0.1)
 	key(enter)
 	
 	
@@ -295,7 +295,7 @@ crack dev portal$:
 
 back to <user.text>$:
     key(esc c c)
-	sleep(0.05)
+	sleep(0.1)
     user.open_website(user.get_path_includingWord(clip.text(), text))
 
 (prep|prepare) change set$:

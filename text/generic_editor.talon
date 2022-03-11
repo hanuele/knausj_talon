@@ -1,218 +1,211 @@
-find that:
+<user.find> it:
+    edit.find()
+
+<user.find> that:
     edit.find(edit.selected_text())
     user.quick_macro_set("edit.find_next")
-    
-find neck:
+
+<user.find> neck:
     edit.find_next()
     user.quick_macro_set("edit.find_next")
 
-go word left:
+skip whats left:
     edit.word_left()
     user.quick_macro_set("edit.word_left")
 
-go word right:
+skip whats [right]:
     edit.word_right()
     user.quick_macro_set("edit.word_right")
 
-go left:
+tick left:
     edit.left()
     user.quick_macro_set("edit.left")
 
-go right:
+tick [right]:
     edit.right()
     user.quick_macro_set("edit.right")
 
-go up:
+north:
     edit.up()
     user.quick_macro_set("edit.up")
 
-go down:
+south:
     edit.down()
     user.quick_macro_set("edit.down")
 
-
-go start:
+<user.start>:
     edit.line_start()
 
-go end:
+<user.end>:
     edit.line_end()
 
-go way left:
+line <user.start>:
     edit.line_start()
     edit.line_start()
 
-go way right:
-    edit.line_end()
-
-go way down:
-    edit.file_end()
-
-go way up:
-    edit.file_start()
-    
-go bottom:
+[go] bottom:
     edit.file_end()
     
-go top:
+[go] top:
     edit.file_start()
 
-go page down:
+[go] page down:
     edit.page_down()
     user.quick_macro_set("edit.page_down")
 
 
-go page up:
+[go] page up:
     edit.page_up()
     user.quick_macro_set("edit.page_up")
 
 # selecting
-select line:
+<user.select> line:
     edit.select_line()
 
-select all:
+<user.select> all:
     edit.select_all()
 
-select left:
+<user.select> left:
     edit.extend_left()
     user.quick_macro_set("edit.extend_left")
 
-select right:
+<user.select> [right]:
     edit.extend_right()
     user.quick_macro_set("edit.extend_right")
 
-select up:
+<user.select> up:
     edit.extend_line_up()
     user.quick_macro_set("edit.extend_line_up")
 
-select down:
+<user.select> down:
     edit.extend_line_down()
     user.quick_macro_set("edit.extend_line_down")
 
-select word:
+<user.select> here:
     edit.select_word()
 
-select word left:
+<user.select> whats left:
     edit.extend_word_left()
     user.quick_macro_set("edit.extend_word_left")
 
-select word right:
+<user.select> whats [right]:
     edit.extend_word_right()
     user.quick_macro_set("edit.extend_word_right")
 
-select way left:
+<user.select> <user.start>:
     edit.extend_line_start()
 
-select way right:
+<user.select> <user.end>:
     edit.extend_line_end()
 
-select way up:
+<user.select> top:
     edit.extend_file_start()
 
-select way down:
+<user.select> bottom:
     edit.extend_file_end()
 
 # editing
-indent [more]:
+in dent:
     edit.indent_more()
     user.quick_macro_set("edit.indent_more")
 
-(indent less | out dent):
+out dent:
     edit.indent_less()
     user.quick_macro_set("edit.indent_less")
 
 # deleting
-clear line:
+<user.delete> line:
     edit.delete_line()
     user.quick_macro_set("edit.delete_line")
 
-clear left:
+<user.delete> left:
     key(backspace)
     user.quick_macro_set("edit.delete_line")
 
-clear right:
+<user.delete> [right]:
     key(delete)
     user.quick_macro_set("key","delete")
 
 
-clear up:
+<user.delete> up:
     edit.extend_line_up()
     edit.delete()
     user.quick_macro_set_chained("edit.extend_line_up#edit.delete")
 
-clear down:
+<user.delete> down:
     edit.extend_line_down()
     edit.delete()
     user.quick_macro_set_chained("edit.extend_line_down#edit.delete")
 
-clear word:
+<user.delete> here:
     edit.delete_word()
 
-clear word left:
+<user.delete> whats left:
     edit.extend_word_left()
     edit.delete()
     user.quick_macro_set_chained("edit.extend_word_left#edit.delete")
 
-clear word right:
+<user.delete> whats [right]:
     edit.extend_word_right()
     edit.delete()
     user.quick_macro_set_chained("edit.extend_word_right#edit.delete")
 
-clear way left:
+<user.delete> <user.start>:
     edit.extend_line_start()
     edit.delete()
 
-clear way right:
+<user.delete> <user.end>:
     edit.extend_line_end()
     edit.delete()
 
-clear way up:
+<user.delete> top:
     edit.extend_file_start()
     edit.delete()
 
-clear way down:
+<user.delete> bottom:
     edit.extend_file_end()
     edit.delete()
 
-clear all:
+<user.delete> all:
     edit.select_all()
     edit.delete()
 
-#copy commands
-copy all:
+#<user.copy> commands
+<user.copy> all:
     edit.select_all()
     edit.copy()
 #to do: do we want these variants, seem to conflict
-# copy left:
+# <user.copy> left:
 #      edit.extend_left()
 #      edit.copy()
-# copy right:
+# <user.copy> right:
 #     edit.extend_right()
 #     edit.copy()
-# copy up:
+# <user.copy> up:
 #     edit.extend_up()
 #     edit.copy()
-# copy down:
+# <user.copy> down:
 #     edit.extend_down()
 #     edit.copy()
 
-copy word:
+<user.copy> here:
     edit.select_word()
     edit.copy()
 
-copy word left:
+<user.copy> whats left:
     edit.extend_word_left()
     edit.copy()
 
-copy word right:
+<user.copy> whats [right]:
     edit.extend_word_right()
     edit.copy()
 
-copy line:
+<user.copy> line:
     edit.select_line()
     edit.copy()
 
 #cut commands
-cut all:
+<user.cut> all:
     edit.select_all()
     edit.cut()
 #to do: do we want these variants
@@ -229,19 +222,19 @@ cut all:
 #     edit.select_all()
 #     edit.cut()
 
-cut word:
+<user.cut> here:
     edit.select_word()
     edit.cut()
 
-cut word left:
+<user.cut> whats left:
     edit.extend_word_left()
     edit.cut()
 
-cut word right:
+<user.cut> whats [right]:
     edit.extend_word_right()
     edit.cut()
 
-cut line:
+<user.cut> line:
     edit.select_line()
     edit.cut()
 

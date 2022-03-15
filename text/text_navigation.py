@@ -178,8 +178,18 @@ def navigate_left(
         # put back the old selection, if the search failed
         extend_left(current_selection_length)
         return
+    
     start = match.start()
     end = match.end()
+    
+    list_charwrapper = ["parens","squares","braces","duke","quotes"]
+    
+    for item in list_charwrapper:
+        if regex == re.compile(navigation_target_names[item]):
+            #I don't want the surrounding chars
+            start = start+1
+            end = end-1
+            
     handle_navigation_action(
         navigation_action, navigation_target_name, before_or_after, direction, text, start, end
     )
@@ -200,8 +210,18 @@ def navigate_right(
         # put back the old selection, if the search failed
         extend_right(current_selection_length)
         return
+   
     start = current_selection_length + match.start()
     end = current_selection_length + match.end()
+    
+    list_charwrapper = ["parens","squares","braces","duke","quotes"]
+    
+    for item in list_charwrapper:
+        if regex == re.compile(navigation_target_names[item]):
+            #I don't want the surrounding chars
+            start = start+1
+            end = end-1
+        
     handle_navigation_action(
         navigation_action, navigation_target_name, before_or_after, direction, text, start, end
     )

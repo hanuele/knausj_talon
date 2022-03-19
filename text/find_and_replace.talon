@@ -14,6 +14,7 @@ replace all: user.replace_everywhere("")
 replace <user.text> all: user.replace_everywhere(text)
 replace confirm that: user.replace_confirm()
 replace confirm all: user.replace_confirm_all()
+#TODO replace terms
 
 #quick replace commands, modeled after jetbrains
 clear last <user.text> [over]: 

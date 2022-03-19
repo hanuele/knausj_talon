@@ -1,6 +1,6 @@
 tag: user.pages
 -
-page next: user.page_next()
-page last: user.page_previous()
-go page <number>: user.page_jump(number)
-go page final: user.page_final()
+page <user.term_navigate_right>: user.page_next()
+page <user.term_navigate_left>: user.page_previous()
+<user.term_go> page <number>: user.page_jump(number)
+<user.term_go> page final: user.page_final()

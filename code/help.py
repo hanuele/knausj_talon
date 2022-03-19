@@ -4,7 +4,7 @@ import math
 import re
 from typing import Dict, List, Iterable, Set, Tuple, Union
 
-from talon import Module, Context, actions, imgui, Module, registry, ui, app
+from talon import Module, Context, actions, imgui, Module, registry,ui, app
 from talon.grammar import Phrase
 
 from itertools import islice
@@ -332,6 +332,9 @@ def draw_commands_title(gui: imgui.GUI, title: str):
 
 def draw_commands(gui: imgui.GUI, commands: Iterable[Tuple[str, str]]):
     for key, val in commands:
+        matches = re.search(r"\<user\.term\_.*\>",key)
+        if matches:
+            key = registry.lists["user.terms"][0][matches.group().replace("<user.term_", "").replace(">","").upper()]
         val = val.split("\n")
         if len(val) > 1:
             gui.text("{}:".format(key))

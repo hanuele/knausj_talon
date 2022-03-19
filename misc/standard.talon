@@ -38,7 +38,7 @@ page down:
 	edit.copy()
 	user.quick_macro_set("edit.paste")
 
-<user.term_copy> alles:
+<user.term_copy> all:
     edit.select_all()
     edit.copy()
     user.quick_macro_set("edit.paste")

@@ -2,8 +2,8 @@
 control mouse: user.mouse_toggle_control_mouse()
 zoom mouse: user.mouse_toggle_zoom_mouse()
 camera overlay: user.mouse_toggle_camera_overlay()
-run calibration: user.mouse_calibrate()	
-pick: 
+run calibration: user.mouse_calibrate()
+touch:
 	mouse_click(0)
 	# close the mouse grid if open
 	user.grid_close()
@@ -29,24 +29,24 @@ righty:
 #option = alt
 #shift
 #super = windows key
-<user.modifiers> pick: 
+<user.modifiers> touch:
 	key("{modifiers}:down")
 	mouse_click(0)
 	key("{modifiers}:up")
 	# close the mouse grid
 	user.grid_close()
-<user.modifiers> righty: 
+<user.modifiers> righty:
 	key("{modifiers}:down")
 	mouse_click(1)
 	key("{modifiers}:up")
 	# close the mouse grid
 	user.grid_close()
-(dubclick | duke): 
+(dubclick | duke):
 	mouse_click()
 	mouse_click()
 	# close the mouse grid
 	user.grid_close()
-(tripclick | triplick): 
+(tripclick | triplick):
 	mouse_click()
 	mouse_click()
 	mouse_click()

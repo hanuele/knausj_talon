@@ -48,8 +48,8 @@
 #   What action to perform.
 #
 # [{user.navigation_target_name}]: word, small, big, parens, squares, braces, quotes, angles, all, method, constant (default: word)
-#	The predetermined unit to select if before_or_after was specified. 
-#	Defaults to "word" 
+#	The predetermined unit to select if before_or_after was specified.
+#	Defaults to "word"
 #
 # [{user.before_or_after}]: before, after (default: special behavior)
 #   For move/extend: where to leave the cursor, before or after the target.

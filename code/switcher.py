@@ -14,7 +14,7 @@ import subprocess
 import win32gui
 import logging
 
-# Construct at startup a list of overides for application names (similar to how homophone list is managed)
+# Construct at startup a list o3f overides for application names (similar to how homophone list is managed)
 # ie for a given talon recognition word set  `one note`, recognized this in these switcher functions as `ONENOTE`
 # the list is a comma seperated `<Recognized Words>, <Overide>`
 # TODO: Consider put list csv's (homophones.csv, app_name_overrides.csv) files together in a seperate directory,`knausj_talon/lists`
@@ -116,7 +116,7 @@ if app.platform == "windows":
         wintypes.DWORD,  # dwFlags
         wintypes.HANDLE,  # hToken
         _PPITEMIDLIST,
-    )  # ppidl
+    )  # ppidl 
 
     def get_known_folder_id_list(folder_id, htoken=None):
         if isinstance(folder_id, pywintypes.IIDType):

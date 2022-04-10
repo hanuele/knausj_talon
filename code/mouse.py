@@ -10,6 +10,7 @@ from talon import (
     imgui,
     noise,
     ui,
+
 )
 from talon_plugins import eye_mouse, eye_zoom_mouse
 from talon_plugins.eye_mouse import config, toggle_camera_overlay, toggle_control
@@ -134,6 +135,10 @@ class Actions:
         """Toggles control mouse"""
         toggle_control(not config.control_mouse)
 
+    def mouse_fusion_toggle():
+        """Toggles fusion mouse"""
+        actions.experimental.fusion1_toggle()
+        
     def mouse_toggle_camera_overlay():
         """Toggles camera overlay"""
         toggle_camera_overlay(not config.show_camera)

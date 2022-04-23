@@ -38,11 +38,6 @@ todo <number> tag <user.text>$:
 keep on top$: 
 	key(super-ctrl-t)
 
-(deck neck | shuffle)$: 
-	key(super-pagedown)
-
-deck prev$:
-	key(super-pageup)
 
 splitt horizon$:
 	key(super-ctrl-alt-5)

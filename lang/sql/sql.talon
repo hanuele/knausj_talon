@@ -92,7 +92,7 @@ declare unique:
     "DECLARE @variable uniqueidentifier = '';"
     key(left:2)
 declare string: 
-    user.paste("DECLARE @variable nvarchar(50) = '';")
+    user.paste("DECLARE @variable nvarchar(50) = '';") 
     key(left:2)
 
 read view: 
@@ -100,6 +100,7 @@ read view:
                 from sys.objects o 
                 join sys.sql_modules m on m.object_id = o.object_id 
                 where o.object_id = object_id(\'\')'''
+    user.paste(command)
     key(left:2)
 
 get meta information:

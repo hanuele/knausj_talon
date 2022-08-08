@@ -1,5 +1,5 @@
 
-control mouse: user.mouse_control2_toggle()
+control mouse: user.mouse_control_toggle()
 zoom mouse: user.mouse_toggle_zoom_mouse()
 camera overlay: user.mouse_toggle_camera_overlay()
 run calibration: user.mouse_calibrate()

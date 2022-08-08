@@ -135,9 +135,9 @@ class Actions:
         """Toggles control mouse"""
         toggle_control(not config.control_mouse)
 
-    def mouse_control2_toggle():
+    def mouse_control_toggle():
         """Toggles control 2 mouse"""
-        actions.tracking.control2_toggle()
+        actions.tracking.control_toggle()
         
     def mouse_toggle_camera_overlay():
         """Toggles camera overlay"""

@@ -1,6 +1,6 @@
 from typing import Optional
-from talon import imgui, Module, speech_system, actions, app
-from datetime import datetime
+
+from talon import Module, actions, imgui, speech_system
 
 # We keep command_history_size lines of history, but by default display only
 # command_history_display of them.
@@ -17,7 +17,7 @@ history = []
 def on_phrase(j):
     global history
 
-    words = j.get('text')
+    words = j.get("text")
 
     text = actions.user.history_transform_phrase_text(words)
 
@@ -27,12 +27,14 @@ def on_phrase(j):
 
 
 # todo: dynamic rect?
-@imgui.open(x=1450,y=1405)
+@imgui.open(y=0)
 def gui(gui: imgui.GUI):
     global history
-    #gui.text("Command History")
-    #gui.line()
-    text = history[:] if hist_more else history[-1:]
+    gui.text("Command History")
+    gui.line()
+    text = (
+        history[:] if hist_more else history[-setting_command_history_display.get() :]
+    )
     for line in text:
         gui.text(line)
 
@@ -87,4 +89,4 @@ class Actions:
         if not actions.speech.enabled():
             return None
 
-        return ' '.join(words) if words else None
+        return " ".join(words) if words else None

@@ -70,8 +70,7 @@ disk all: edit.save_all()
 	key(backspace)
 	user.quick_macro_set("key","backspace")
 
-(pad|padding): 
-	insert("  ") 
-	key(left)
+(pad | padding): 
+	user.insert_between(" ", " ")
 
 slap: edit.line_insert_down()

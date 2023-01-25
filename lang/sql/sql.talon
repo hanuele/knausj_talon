@@ -190,6 +190,14 @@ get changes:
                 Order By CONVERT(DATE, Timestamp) desc'''
     user.paste(command)
 
+find term:
+    command = '''SELECT [Schema] = schema_name(o.schema_id), o.Name, o.type
+                 FROM sys.sql_modules m
+                 INNER JOIN sys.objects o ON o.object_id = m.object_id
+                 WHERE m.definition LIKE \'%%\' '''
+    user.paste(command)
+    key(left:3)
+    
 get version:
     "SELECT @@version"
 

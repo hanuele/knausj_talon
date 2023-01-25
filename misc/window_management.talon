@@ -37,16 +37,16 @@ running close: user.switcher_hide_running()
 visible close: user.switcher_hide_visible()
 launch <user.launch_applications>: user.switcher_launch(launch_applications)
 
-snap <user.window_snap_position>: user.snap_window(window_snap_position)
-snap <user.term_navigate_right> [screen]: user.move_window_next_screen()
-snap <user.term_navigate_left> [screen]: user.move_window_previous_screen()
-snap screen <number>: user.move_window_to_screen(number)
-snap <user.running_applications> <user.window_snap_position>:
+touch <user.window_snap_position>: user.snap_window(window_snap_position)
+touch <user.term_navigate_right> [screen]: user.move_window_next_screen()
+touch <user.term_navigate_left> [screen]: user.move_window_previous_screen()
+touch screen <number>: user.move_window_to_screen(number)
+touch <user.running_applications> <user.window_snap_position>:
     user.snap_app(running_applications, window_snap_position)
-snap <user.running_applications> [screen] <number>:
+touch <user.running_applications> [screen] <number>:
     user.move_app_to_screen(running_applications, number)
 
-snap <number> <user.window_snap_position>: 
+touch <number> <user.window_snap_position>: 
     user.move_window_to_screen(number)
     sleep(0.5)
     user.snap_window(window_snap_position)

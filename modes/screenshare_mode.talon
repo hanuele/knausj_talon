@@ -133,10 +133,10 @@ go global <user.letter>$:
 	insert(letter)
 	key(enter)
 
-westen$:
+osten$:
     key(super-right)
 
-osten$:
+westen$:
     key(super-left)
 
 norden$:

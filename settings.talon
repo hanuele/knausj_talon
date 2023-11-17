@@ -25,7 +25,7 @@ settings():
     user.mouse_enable_pop_click = 1
 
     # Uncomment the below to enable mouse scroll down using hiss noise
-    # user.mouse_enable_hiss_scroll = 1
+    user.mouse_enable_hiss_scroll = 1
 
     # When enabled, the 'Scroll Mouse' GUI will not be shown.
     user.mouse_hide_mouse_gui = 0
@@ -34,7 +34,7 @@ settings():
     user.mouse_wake_hides_cursor = 0
 
     # The amount to scroll up/down (equivalent to mouse wheel on Windows by default)
-    user.mouse_wheel_down_amount = 120
+    user.mouse_wheel_down_amount = 160
 
     # The amount to scroll left/right
     user.mouse_wheel_horizontal_amount = 40

@@ -37,6 +37,11 @@ class CSVData:
 # are intentionally omitted, as their use cases are not compatible with .talon-list conversions
 supported_csv_files = [
     CSVData(
+        "user.navigationurls",
+        os.path.join("apps", "git", "navigationurls.csv"),
+        os.path.join("apps", "git", "navigationurls.talon-list"),
+    ),
+    CSVData(
         "user.git_argument",
         os.path.join("apps", "git", "git_arguments.csv"),
         os.path.join("apps", "git", "git_argument.talon-list"),

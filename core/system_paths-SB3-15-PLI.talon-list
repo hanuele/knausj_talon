@@ -1,0 +1,16 @@
+list: user.system_paths
+hostname: SB3-15-PLI
+-
+user: C:\Users\PeterLinder(3Txpert)
+profile: C:\Users\PeterLinder(3Txpert)
+desktop: C:\Users\PeterLinder(3Txpert)\OneDrive\Desktop
+desk: C:\Users\PeterLinder(3Txpert)\Desktop
+documents: C:\Users\PeterLinder(3Txpert)\OneDrive\Documents
+docks: C:\Users\PeterLinder(3Txpert)\Documents
+downloads: C:\Users\PeterLinder(3Txpert)\Downloads
+music: C:\Users\PeterLinder(3Txpert)\Music
+pictures: C:\Users\PeterLinder(3Txpert)\OneDrive\Pictures
+videos: C:\Users\PeterLinder(3Txpert)\Videos
+talon home: C:\Users\PeterLinder(3Txpert)\AppData\Roaming\talon
+talon user: C:\Users\PeterLinder(3Txpert)\AppData\Roaming\talon\user
+one drive: C:\Users\PeterLinder(3Txpert)\OneDrive
